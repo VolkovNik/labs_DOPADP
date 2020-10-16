@@ -9,8 +9,14 @@ import java.io.IOException;
 public class AirportListMapper extends Mapper<LongWritable, Text, AirportWritableComparable, Text> {
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-        String aiportList = value.toString();
-        String[] airportValues = aiportList.split(",");
-        if (airportValues[0] != )
+        String airportList = value.toString();
+        String[] airportValues = airportList.split(",");
+        if (airportValues[0] != "Code") {
+            AirportWritableComparable keyFromAirport = new AirportWritableComparable();
+            int airportID = Integer.parseInt(airportValues[0]);
+            keyFromAirport.setIndicator(0);
+            keyFromAirport.setAirportID(airportID);
+            context.write(keyFromAirport, new Text(airportValues[1]));
+        }
     }
 }
