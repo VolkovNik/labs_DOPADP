@@ -30,7 +30,28 @@ public class AirportWritableComparable implements WritableComparable {
     public int compareTo(Object o) {
         AirportWritableComparable compareAirport = (AirportWritableComparable) o;
 
-        if (A)
+        if (this.airportID > compareAirport.airportID) {
+            return 1;
+        }
+
+        if (this.airportID < compareAirport.airportID) {
+            return -1;
+        }
+
+        if (this.indicator > compareAirport.indicator) {
+            return 1;
+        }
+
+        if (this.indicator < compareAirport.indicator) {
+            return -1;
+        }
+
+        return 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.airportID;
     }
 
     @Override
