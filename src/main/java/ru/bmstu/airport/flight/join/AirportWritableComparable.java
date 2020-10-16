@@ -28,7 +28,9 @@ public class AirportWritableComparable implements WritableComparable {
 
     @Override
     public int compareTo(Object o) {
-        return 0;
+        AirportWritableComparable compareAirport = (AirportWritableComparable) o;
+
+        if (A)
     }
 
     @Override
