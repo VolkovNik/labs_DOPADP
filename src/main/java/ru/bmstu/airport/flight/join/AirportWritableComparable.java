@@ -7,8 +7,8 @@ import java.io.DataOutput;
 import java.io.IOException;
 
 public class AirportWritableComparable implements WritableComparable {
-    int airportID;
-    int indicator;
+    private int airportID;
+    private int indicator;
 
     void setAirportID(int newAirportId) {
         this.airportID = newAirportId;
