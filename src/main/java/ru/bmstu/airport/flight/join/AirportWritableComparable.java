@@ -1,2 +1,6 @@
-package ru.bmstu.airport.flight.join;public class AirportWritableComparable {
+package ru.bmstu.airport.flight.join;
+
+import org.apache.hadoop.io.WritableComparable;
+
+public class AirportWritableComparable extends WritableComparable<> {
 }
