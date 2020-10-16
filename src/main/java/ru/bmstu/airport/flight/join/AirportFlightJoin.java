@@ -14,13 +14,13 @@ public class AirportFlightJoin {
         Job job = Job.getInstance();
         job.setJarByClass(AirportFlightJoin.class);
         job.setJobName("JoinJob sort");
-        MultipleInputs.addInputPath(job, new Path(args[0]), TextInputFormat.class, CallsJoinMapper.class);
-        MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, SystemsJoinMapper.class);
+        MultipleInputs.addInputPath(job, new Path(args[0]), TextInputFormat.class, AirportListMapper.class);
+        MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, FlightListMapper.class);
         FileOutputFormat.setOutputPath(job, new Path(args[2]));
         job.setPartitionerClass(AirportPartition.class);
         //job.setGroupingComparatorClass(TextPair.FirstComparator.class);
-        job.setReducerClass(.class);
-        job.setMapOutputKeyClass(TextPair.class);
+        job.setReducerClass(AirportFlightReducer.class);
+        job.setMapOutputKeyClass(AirportWritableComparable.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
         job.setNumReduceTasks(2);
