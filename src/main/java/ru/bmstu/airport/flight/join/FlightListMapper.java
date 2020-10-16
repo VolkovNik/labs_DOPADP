@@ -11,7 +11,7 @@ public class FlightListMapper extends Mapper<LongWritable, Text, AirportWritable
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         String flightList = value.toString();
         String[] flightValues = flightList.split(",");
-        if (!flightValues[0].equals("YEAR")) {
+        if (!flightValues[0].equals("\"YEAR\"")) {
             AirportWritableComparable keyFlightList = new AirportWritableComparable();
             int airportID = Integer.parseInt(flightValues[14]);
             keyFlightList.setAirportID(airportID);
