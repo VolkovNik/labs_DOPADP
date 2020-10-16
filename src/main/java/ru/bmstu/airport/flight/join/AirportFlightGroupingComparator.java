@@ -1,2 +1,4 @@
-package ru.bmstu.airport.flight.join;public class AirportFlightGroupingComparator {
+package ru.bmstu.airport.flight.join;
+
+public class AirportFlightGroupingComparator {
 }
