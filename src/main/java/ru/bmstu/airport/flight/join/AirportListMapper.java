@@ -12,12 +12,16 @@ public class AirportListMapper extends Mapper<LongWritable, Text, AirportWritabl
         String airportList = value.toString();
         String[] airportValues = airportList.split(",");
         System.out.println(airportValues);
-        if (!airportValues[0].equals("Code")) {
-            AirportWritableComparable keyFromAirport = new AirportWritableComparable();
-            int airportID = Integer.parseInt(airportValues[0]);
-            keyFromAirport.setIndicator(0);
-            keyFromAirport.setAirportID(airportID);
-            context.write(keyFromAirport, new Text(airportValues[1]));
-        }
+//        if (!airportValues[0].equals("Code")) {
+//            AirportWritableComparable keyFromAirport = new AirportWritableComparable();
+//            int airportID = Integer.parseInt(airportValues[0]);
+//            keyFromAirport.setIndicator(0);
+//            keyFromAirport.setAirportID(airportID);
+//            context.write(keyFromAirport, new Text(airportValues[1]));
+//        }
+        AirportWritableComparable keyFromAirport = new AirportWritableComparable();
+                    keyFromAirport.setIndicator(0);
+            keyFromAirport.setAirportID(228);
+        context.write(keyFromAirport, value);
     }
 }
