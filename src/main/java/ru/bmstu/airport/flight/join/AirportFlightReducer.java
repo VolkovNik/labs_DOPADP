@@ -6,10 +6,18 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
+import java.util.Iterator;
 
 public class AirportFlightReducer extends Reducer<AirportWritableComparable, Text, IntWritable, Text> {
     @Override
     protected void reduce(AirportWritableComparable key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
-        super.reduce(key, values, context);
+        Iterator iter = values.iterator();
+        String naruto = "";
+        while (iter.hasNext()) {
+            naruto += iter.toString();
+            iter.next();
+        }
+        context.write(new IntWritable(key.getAirportID()), new Text(naruto));
+
     }
 }
