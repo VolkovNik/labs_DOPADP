@@ -23,7 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4c27eb50-38bb-42fb-aa62-0ddbb5e21e2b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/airport/flight/join/AirportFlightJoin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/airport/flight/join/AirportFlightJoin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/airport/flight/join/AirportWritableComparable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/airport/flight/join/AirportWritableComparable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +78,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602876205422</updated>
-      <workItem from="1602876206938" duration="614000" />
+      <workItem from="1602876206938" duration="1026000" />
     </task>
     <servers />
   </component>
