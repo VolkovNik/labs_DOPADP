@@ -11,7 +11,7 @@ public class FlightListMapper extends Mapper<LongWritable, Text, AirportWritable
     private static final String FLAG_FIRST_STRING = "\"YEAR\"";
     private static final int ZERO_COLUMN = 0;
     private static final int ID_AIRPORT_COLUMN = 14;
-    private static final int ARR_DELAY_COLUMN = 19;
+    private static final int CODE_DELAY_COLUMN = 19;
     private static final int ARR_DELAY_COLUMN = 18;
     private static final String EMPTY_STRING = "";
     private static final int INDICATOR = 1;
@@ -28,6 +28,7 @@ public class FlightListMapper extends Mapper<LongWritable, Text, AirportWritable
         return Float.parseFloat(strCode);
     }
 
+    private boolean isNo
 
 
     @Override
