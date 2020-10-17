@@ -13,6 +13,5 @@ public class AirportFlightGroupingComparator extends WritableComparator {
         AirportWritableComparable left = (AirportWritableComparable)a;
         AirportWritableComparable right = (AirportWritableComparable)b;
         return Integer.compare(left.getAirportID(), right.getAirportID());
-
     }
 }
