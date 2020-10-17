@@ -14,8 +14,9 @@ public class AirportFlightReducer extends Reducer<AirportWritableComparable, Tex
         Iterator iter = values.iterator();
         String naruto = "";
         while (iter.hasNext()) {
-            naruto += iter.toString();
             iter.next();
+            naruto += iter.toString();
+
         }
         context.write(new IntWritable(key.getAirportID()), new Text(naruto));
 

@@ -11,7 +11,6 @@ public class AirportListMapper extends Mapper<LongWritable, Text, AirportWritabl
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         String airportList = value.toString();
         String[] airportValues = airportList.split(",");
-        System.out.println(airportValues);
         if (!airportValues[0].equals("Code")) {
             AirportWritableComparable keyFromAirport = new AirportWritableComparable();
             airportValues[0] = airportValues[0].replaceAll("^\"+|\"+$", "");
