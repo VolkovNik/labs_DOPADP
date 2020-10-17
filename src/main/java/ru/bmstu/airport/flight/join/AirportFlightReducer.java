@@ -13,13 +13,14 @@ public class AirportFlightReducer extends Reducer<AirportWritableComparable, Tex
     protected void reduce(AirportWritableComparable key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
         Iterator<Text> iter = values.iterator();
         Text systemInfo = new Text(iter.next());
-        StringBuilder naruto = new StringBuilder("lab2: ");
+        String naruto = "";
         while (iter.hasNext()) {
             iter.next();
-            
+            Text call = iter.next();
+            naruto += call.toString();
 
         }
-        context.write(new IntWritable(key.getAirportID()), new Text(naruto.toString()));
+        context.write(new IntWritable(key.getAirportID()), new Text(naruto));
 
     }
 }
