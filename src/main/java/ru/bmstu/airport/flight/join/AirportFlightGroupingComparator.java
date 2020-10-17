@@ -9,17 +9,10 @@ public class AirportFlightGroupingComparator extends WritableComparator {
     }
 
     @Override
-    public int compare(Object a, Object b) {
+    public int compare(WritableComparable a, WritableComparable b) {
         AirportWritableComparable left = (AirportWritableComparable)a;
         AirportWritableComparable right = (AirportWritableComparable)b;
-        if (left.getAirportID() >  right.getAirportID()) {
-            return 1;
-        }
+        return Integer.compare(left.getAirportID(), right.getAirportID());
 
-        if (left.getAirportID() < right.getAirportID()) {
-            return -1;
-        }
-
-        return 0;
     }
 }
