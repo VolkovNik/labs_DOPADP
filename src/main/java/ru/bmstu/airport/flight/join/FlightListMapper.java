@@ -14,6 +14,8 @@ public class FlightListMapper extends Mapper<LongWritable, Text, AirportWritable
     private static final int CANCELLED_COLUMN = 19;
     private static final int ARR_DELAY_COLUMN = 18;
     private static final String EMPTY_STRING = "";
+    private static final float CANCEL_CODE = 0;
+    private static final float ZERO_TIME = 0;
     private static final int INDICATOR_FLIGHT_MAPPER = 1;
 
     private String[] getArrayOfValues(String strValue) {
@@ -28,8 +30,24 @@ public class FlightListMapper extends Mapper<LongWritable, Text, AirportWritable
         return Float.parseFloat(strCode);
     }
 
-    private boolean
+    private boolean isCancelled(float cancelled) {
+        if (cancelled == CANCEL_CODE) {
+            return true;
+        }
+        return false;
+    }
 
+    private boolean isDelayed(String strDelay) {
+        return !strDelay.equals(EMPTY_STRING);
+    }
+
+    private boolean isDelayTimeMoreZero(String strArrTime) {
+        return ZERO_TIME < Float.parseFloat(strArrTime);
+    }
+
+    private int getAirportID(String airportValue) {
+        return Integer.parseInt(airportValue);
+    }
 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
@@ -37,12 +55,13 @@ public class FlightListMapper extends Mapper<LongWritable, Text, AirportWritable
         String[] flightValues = getArrayOfValues(flightList);
 
         if (!isFirstString(flightValues[ZERO_COLUMN])) {
-            float cancelled = getCancelCode(flightValues[CANCELLED_COLUMN]);
+            float cancelCode = getCancelCode(flightValues[CANCELLED_COLUMN]);
 
-            if (cancelled == 0 && !flightValues[ARR_DELAY_COLUMN].equals(EMPTY_STRING)) {
-                if ((float)0 < Float.parseFloat(flightValues[ARR_DELAY_COLUMN])) {
+            if (!isCancelled(cancelCode) && isDelayed(flightValues[ARR_DELAY_COLUMN])) {
+                if (isDelayTimeMoreZero(flightValues[ARR_DELAY_COLUMN])) {
+
                     AirportWritableComparable keyFlightList = new AirportWritableComparable();
-                    int airportID = Integer.parseInt(flightValues[ID_AIRPORT_COLUMN]);
+                    int airportID = getAirportID(flightValues[ID_AIRPORT_COLUMN]);
                     keyFlightList.setAirportID(airportID);
                     keyFlightList.setIndicator(INDICATOR_FLIGHT_MAPPER);
                     context.write(keyFlightList, new Text(flightValues[ARR_DELAY_COLUMN]));
