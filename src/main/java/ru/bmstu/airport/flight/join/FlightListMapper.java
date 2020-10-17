@@ -21,6 +21,6 @@ public class FlightListMapper extends Mapper<LongWritable, Text, AirportWritable
         AirportWritableComparable keyFromAirport = new AirportWritableComparable();
         keyFromAirport.setIndicator(1);
         keyFromAirport.setAirportID(228);
-        context.write(keyFromAirport, newText);
+        context.write(keyFromAirport, new Text(flightValues[1]));
     }
 }
