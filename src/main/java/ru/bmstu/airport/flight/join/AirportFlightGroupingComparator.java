@@ -12,7 +12,7 @@ public class AirportFlightGroupingComparator extends WritableComparator {
     public int compare(Object a, Object b) {
         AirportWritableComparable left = (AirportWritableComparable)a;
         AirportWritableComparable right = (AirportWritableComparable)b;
-        if (left.getIndicator() >  right.getIndicator()) {
+        if (left.getAirportID() >  right.getAirportID()) {
             return 1;
         }
     }
