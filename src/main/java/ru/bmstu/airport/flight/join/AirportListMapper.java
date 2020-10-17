@@ -12,7 +12,7 @@ public class AirportListMapper extends Mapper<LongWritable, Text, AirportWritabl
     private static final String REPLACEMENT = "";
     private static final int ID_AIRPORT_COLUMN = 0;
     private static final int NAME_AIRPORT_COLUMN = 1;
-    private static final int INDICATOR = 0;
+    private static final int INDICATOR_AIRPORT_MAPPER = 0;
     private static final String FLAG_FIRST_STRING = "Code";
 
     private String[] getArrayOfValues(String strValue) {
@@ -44,7 +44,7 @@ public class AirportListMapper extends Mapper<LongWritable, Text, AirportWritabl
 
             int airportID = getAirportID(airportValues[ID_AIRPORT_COLUMN]);
 
-            keyFromAirport.setIndicator(INDICATOR);
+            keyFromAirport.setIndicator(INDICATOR_AIRPORT_MAPPER);
             keyFromAirport.setAirportID(airportID);
 
             context.write(keyFromAirport, new Text(airportValues[1]));
