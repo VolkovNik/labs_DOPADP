@@ -47,7 +47,7 @@ public class AirportListMapper extends Mapper<LongWritable, Text, AirportWritabl
             keyFromAirport.setIndicator(INDICATOR_AIRPORT_MAPPER);
             keyFromAirport.setAirportID(airportID);
 
-            context.write(keyFromAirport, new Text(airportValues[1]));
+            context.write(keyFromAirport, new Text(airportValues[NAME_AIRPORT_COLUMN]));
         }
     }
 }

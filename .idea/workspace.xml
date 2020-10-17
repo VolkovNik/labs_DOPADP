@@ -23,8 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4c27eb50-38bb-42fb-aa62-0ddbb5e21e2b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/airport/flight/join/AirportFlightReducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/airport/flight/join/AirportFlightReducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/airport/flight/join/FlightListMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/airport/flight/join/FlightListMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/airport/flight/join/AirportListMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/airport/flight/join/AirportListMapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +84,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602876205422</updated>
-      <workItem from="1602876206938" duration="22367000" />
+      <workItem from="1602876206938" duration="23002000" />
     </task>
     <servers />
   </component>
@@ -112,6 +111,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="533" y="163" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1602921268635" />
+    <state x="308" y="200" key="IDE.errors.dialog" timestamp="1602942592297">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="308" y="200" key="IDE.errors.dialog/0.0.1440.900@0.0.1440.900" timestamp="1602942592297" />
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1602924073600">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
