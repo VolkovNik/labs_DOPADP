@@ -41,7 +41,7 @@ public class FlightListMapper extends Mapper<LongWritable, Text, AirportWritable
         return !strDelay.equals(EMPTY_STRING);
     }
 
-    private boolean (String strArrTime) {
+    private boolean isDelayTimeMoreZero(String strArrTime) {
         return ZERO_TIME < Float.parseFloat(strArrTime);
     }
 
