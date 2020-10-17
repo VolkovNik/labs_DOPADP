@@ -15,5 +15,11 @@ public class AirportFlightGroupingComparator extends WritableComparator {
         if (left.getAirportID() >  right.getAirportID()) {
             return 1;
         }
+
+        if (left.getAirportID() < right.getAirportID()) {
+            return -1;
+        }
+
+        return 0;
     }
 }
