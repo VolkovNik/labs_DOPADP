@@ -1,7 +1,5 @@
 package ru.bmstu.airport.flight.join;
 
-import org.apache.hadoop.io.IntWritable;
-import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
@@ -9,9 +7,11 @@ import java.io.IOException;
 import java.util.Iterator;
 
 public class AirportFlightReducer extends Reducer<AirportWritableComparable, Text, Text, Text> {
-    private static String defaultAirportName = "Airport: ";
-    private static String defaultAirportStats = "Delays: ";
-    private static String MIN_STRING = "Min:"
+    private static final String defaultAirportName = "Airport: ";
+    private static final String defaultAirportStats = "Delays: ";
+    private static final String MIN_STRING = "Min: ";
+    private static final String MAX_STRING = " Max: ";
+    private static final String AVERAGE_STRING = " Average: ";
 
     public float getDelay(String delay) {
         return Float.parseFloat(delay);
@@ -50,9 +50,9 @@ public class AirportFlightReducer extends Reducer<AirportWritableComparable, Tex
                 sumOfAllDelays += delay;
                 counterOfDelays++;
             }
-            airportStats += "Min=" + minDelay;
-            airportStats += " Max=" + maxDelay;
-            airportStats += " Average=" + (sumOfAllDelays / (float)counterOfDelays);
+            airportStats += MIN_STRING + minDelay;
+            airportStats += MAX_STRING + maxDelay;
+            airportStats += AVERAGE_STRING + (sumOfAllDelays / (float)counterOfDelays);
 
 
             context.write(new Text(airportName), new Text(airportStats));
