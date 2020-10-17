@@ -19,7 +19,6 @@ public class AirportFlightReducer extends Reducer<AirportWritableComparable, Tex
         while (val_iterator.hasNext()) {
             Text delay = val_iterator.next();
             delays += delay.toString() + " ";
-
         }
         context.write(new IntWritable(key.getAirportID()), new Text(delays));
 
