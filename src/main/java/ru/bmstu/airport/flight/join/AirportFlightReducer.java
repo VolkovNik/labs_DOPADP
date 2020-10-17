@@ -11,8 +11,7 @@ import java.util.Iterator;
 public class AirportFlightReducer extends Reducer<AirportWritableComparable, Text, IntWritable, Text> {
     @Override
     protected void reduce(AirportWritableComparable key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
-        Iterator<Text> iter = values.iterator();
-        //Text systemInfo = new Text(iter.next());
+        String airportName = 
         String naruto = "";
         while (iter.hasNext()) {
             Text call = iter.next();
