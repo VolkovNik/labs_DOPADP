@@ -14,7 +14,7 @@ public class FlightListMapper extends Mapper<LongWritable, Text, AirportWritable
     private static final int CANCELLED_COLUMN = 19;
     private static final int ARR_DELAY_COLUMN = 18;
     private static final String EMPTY_STRING = "";
-    private static final float CANCEL_CODE = 0;
+    private static final float CANCEL_CODE = 1;
     private static final float ZERO_TIME = 0;
     private static final int INDICATOR_FLIGHT_MAPPER = 1;
 
