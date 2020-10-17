@@ -15,7 +15,6 @@ public class AirportFlightReducer extends Reducer<AirportWritableComparable, Tex
         Text systemInfo = new Text(iter.next());
         String naruto = "";
         while (iter.hasNext()) {
-            iter.next();
             Text call = iter.next();
             naruto += call.toString();
 
