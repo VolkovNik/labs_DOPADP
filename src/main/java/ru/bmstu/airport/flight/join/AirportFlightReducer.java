@@ -8,7 +8,7 @@ import org.apache.hadoop.mapreduce.Reducer;
 import java.io.IOException;
 import java.util.Iterator;
 
-public class AirportFlightReducer extends Reducer<AirportWritableComparable, Text, IntWritable, Text> {
+public class AirportFlightReducer extends Reducer<AirportWritableComparable, Text, Text, Text> {
     @Override
     protected void reduce(AirportWritableComparable key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
         String airportName = "Airport: ";
@@ -20,7 +20,7 @@ public class AirportFlightReducer extends Reducer<AirportWritableComparable, Tex
             Text delay = val_iterator.next();
             delays += delay.toString() + " ";
         }
-        context.write(new IntWritable(key.getAirportID()), new Text(delays));
+        context.write(new Text(airportName), new Text(delays));
 
     }
 }
