@@ -18,6 +18,7 @@ public class AirportFlightReducer extends Reducer<AirportWritableComparable, Tex
         String airportName = "Airport: ";
         String airportStats = " Delays: ";
         float sum = 0;
+        int counter = 1;
         Iterator<Text> val_iterator = values.iterator();
         airportName += val_iterator.next().toString();
         if (val_iterator.hasNext()) {
@@ -25,7 +26,7 @@ public class AirportFlightReducer extends Reducer<AirportWritableComparable, Tex
             float minDelay = getDelay(stringDelay);
             float maxDelay = getDelay(stringDelay);
             sum = getDelay(stringDelay);
-            int counter = 1;
+            counter++;
             while (val_iterator.hasNext()) {
                 float delay = getDelay(val_iterator.next().toString());
                 if (delay < minDelay) {
@@ -41,7 +42,7 @@ public class AirportFlightReducer extends Reducer<AirportWritableComparable, Tex
             airportStats += "Max=" + maxDelay;
             airportStats += "Average=" + (sum / (float)counter);
 
-            if (sum == 0) {
+            if (counter == 0) {
                 context.write(new Text(airportName), new Text(airportStats));
             }
         }
