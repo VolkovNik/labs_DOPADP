@@ -22,7 +22,7 @@ public class FlightListMapper extends Mapper<LongWritable, Text, AirportWritable
         return strValue.split(REGEX_SPLITTER_CVS);
     }
 
-    private boolean isFirstString(String str) {
+    private static boolean isFirstString(String str) {
         return str.equals(FLAG_FIRST_STRING);
     }
 
