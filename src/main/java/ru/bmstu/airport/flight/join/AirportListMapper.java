@@ -14,6 +14,7 @@ public class AirportListMapper extends Mapper<LongWritable, Text, AirportWritabl
         if (!airportValues[0].equals("Code")) {
             AirportWritableComparable keyFromAirport = new AirportWritableComparable();
             airportValues[0] = airportValues[0].replaceAll("^\"+|\"+$", "");
+            airportValues[1] = airportValues[1].replaceAll("^\"+|\"+$", "");
             int airportID = Integer.parseInt(airportValues[0]);
             keyFromAirport.setIndicator(0);
             keyFromAirport.setAirportID(airportID);
