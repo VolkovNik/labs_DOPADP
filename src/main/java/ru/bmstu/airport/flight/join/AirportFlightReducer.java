@@ -35,8 +35,8 @@ public class AirportFlightReducer extends Reducer<AirportWritableComparable, Tex
                 sum += delay;
                 counter++;
             }
-
+            context.write(new Text(airportName), new Text(delays));
         }
-        context.write(new Text(airportName), new Text(delays));
+
     }
 }
