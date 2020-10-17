@@ -15,10 +15,10 @@ public class FlightListMapper extends Mapper<LongWritable, Text, AirportWritable
             if (0 < Float.parseFloat(flightValues[18])) {
                 AirportWritableComparable keyFlightList = new AirportWritableComparable();
                 int airportID = Integer.parseInt(flightValues[14]);
-                float delay = Float.parseFloat(flightValues[20]);
+                //float delay = Float.parseFloat(flightValues[20]);
                 keyFlightList.setAirportID(airportID);
                 keyFlightList.setIndicator(1);
-                context.write(keyFlightList, new Text(String.valueOf(delay));
+                context.write(keyFlightList, new Text(flightValues[20]));
             }
         }
 //        AirportWritableComparable keyFromAirport = new AirportWritableComparable();
