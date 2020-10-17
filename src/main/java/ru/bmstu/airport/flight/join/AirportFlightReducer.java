@@ -15,16 +15,16 @@ public class AirportFlightReducer extends Reducer<AirportWritableComparable, Tex
         String delays = " Delays: ";
         Iterator<Text> val_iterator = values.iterator();
         airportName += val_iterator.next().toString();
-        float minDelay;
-        float maxDelay;
-        float avgDelay;
-        int counter = 0;
-
-        while (val_iterator.hasNext()) {
-            Text delay = val_iterator.next();
-            delays += delay.toString() + " ";
+        if (val_iterator.hasNext()) {
+            float minDelay = Float.parseFloat(val_iterator.next().toString());
+            float maxDelay = Float.parseFloat(val_iterator.next().toString());
+            float sum = Float.parseFloat(val_iterator.next().toString());
+            int counter = 1;
+            while (val_iterator.hasNext()) {
+                Text delay = val_iterator.next();
+                delays += delay.toString() + " ";
+            }
+            context.write(new Text(airportName), new Text(delays));
         }
-        context.write(new Text(airportName), new Text(delays));
-
     }
 }
