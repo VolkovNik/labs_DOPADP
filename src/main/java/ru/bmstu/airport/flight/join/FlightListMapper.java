@@ -13,12 +13,14 @@ public class FlightListMapper extends Mapper<LongWritable, Text, AirportWritable
         String[] flightValues = flightList.split(",");
         if (!flightValues[0].equals("\"YEAR\"")) {
             float codeDelay = Float.parseFloat(flightValues[19]);
-            if (codeDelay == 0 && 0 < Float.parseFloat(flightValues[18])) {
-                AirportWritableComparable keyFlightList = new AirportWritableComparable();
-                int airportID = Integer.parseInt(flightValues[14]);
-                keyFlightList.setAirportID(airportID);
-                keyFlightList.setIndicator(1);
-                context.write(keyFlightList, new Text(flightValues[18]));
+            if (codeDelay == 0) {
+                if (0 < Float.parseFloat(flightValues[18])) {
+                    AirportWritableComparable keyFlightList = new AirportWritableComparable();
+                    int airportID = Integer.parseInt(flightValues[14]);
+                    keyFlightList.setAirportID(airportID);
+                    keyFlightList.setIndicator(1);
+                    context.write(keyFlightList, new Text(flightValues[18]));
+                }
             }
         }
     }
