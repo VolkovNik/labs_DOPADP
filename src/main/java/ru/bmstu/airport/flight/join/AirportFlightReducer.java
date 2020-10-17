@@ -39,7 +39,7 @@ public class AirportFlightReducer extends Reducer<AirportWritableComparable, Tex
             airportStats += "Max=" + maxDelay;
             airportStats += "Average=" + (sum / (float)counter)
 
-            context.write(new Text(airportName), new Text(delays));
+            context.write(new Text(airportName), new Text(airportStats));
         }
 
     }
