@@ -10,9 +10,14 @@ public class AirportListMapper extends Mapper<LongWritable, Text, AirportWritabl
     private static final String REGEX_SPLITTER_CVS = ",";
     private static final String REGEX_FOR_QUOTES = "^\"+|\"+$";
     private static final String REPLACEMENT = "";
-    private static final int ID_POSITION = 0;
-    private static final int NAME_AIRPORT_POSITION = 1;
+    private static final int ID_AIRPORT_COLUMN = 0;
+    private static final int NAME_AIRPORT_COLUMN = 1;
     private static final int INDICATOR = 0;
+    private static final String FLAG_FIRST_STRING = "Code";
+
+    private String[] getArrayOfValues(String strValue) {
+        return strValue.split(REGEX_SPLITTER_CVS);
+    }
 
     private int getAirportID(String airportValue) {
         return Integer.parseInt(airportValue);
@@ -23,25 +28,25 @@ public class AirportListMapper extends Mapper<LongWritable, Text, AirportWritabl
     }
 
     private boolean isFirstString(String str) {
-        return str.equals("Code");
+        return str.equals(FLAG_FIRST_STRING);
     }
 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         String airportList = value.toString();
-        String[] airportValues = airportList.split(REGEX_SPLITTER_CVS);
-        if (!isFirstString(airportValues[ID_POSITION])) {
+        String[] airportValues = getArrayOfValues(airportList);
+        if (!isFirstString(airportValues[ID_AIRPORT_COLUMN])) {
 
             AirportWritableComparable keyFromAirport = new AirportWritableComparable();
 
-            airportValues[ID_POSITION] = deleteQuotes(airportValues[ID_POSITION]);
-            airportValues[NAME_AIRPORT_POSITION] = deleteQuotes(airportValues[NAME_AIRPORT_POSITION]);
+            airportValues[ID_AIRPORT_COLUMN] = deleteQuotes(airportValues[ID_AIRPORT_COLUMN]);
+            airportValues[NAME_AIRPORT_COLUMN] = deleteQuotes(airportValues[NAME_AIRPORT_COLUMN]);
 
-            int airportID = getAirportID(airportValues[ID_POSITION]);
+            int airportID = getAirportID(airportValues[ID_AIRPORT_COLUMN]);
 
             keyFromAirport.setIndicator(INDICATOR);
             keyFromAirport.setAirportID(airportID);
-            
+
             context.write(keyFromAirport, new Text(airportValues[1]));
         }
     }
