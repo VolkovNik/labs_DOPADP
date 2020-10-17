@@ -7,7 +7,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 import java.io.IOException;
 
 public class AirportListMapper extends Mapper<LongWritable, Text, AirportWritableComparable, Text> {
-    private static final String R
+    private static final String REGEX_SPLITTER = 
 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
