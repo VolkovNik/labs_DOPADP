@@ -9,7 +9,7 @@ import java.io.IOException;
 public class AirportListMapper extends Mapper<LongWritable, Text, AirportWritableComparable, Text> {
     private static final String REGEX_SPLITTER_CVS = ",";
     private static final String REGEX_FOR_QUOTES = "^\"+|\"+$";
-    private static final String REPLACEMENT = "";
+    private static final String REPLACEMENT_TO_NULL_STR = "";
     private static final int ID_AIRPORT_COLUMN = 0;
     private static final int NAME_AIRPORT_COLUMN = 1;
     private static final int INDICATOR_AIRPORT_MAPPER = 0;
@@ -24,7 +24,7 @@ public class AirportListMapper extends Mapper<LongWritable, Text, AirportWritabl
     }
 
     private String deleteQuotes(String str) {
-        return str.replaceAll(REGEX_FOR_QUOTES, REPLACEMENT);
+        return str.replaceAll(REGEX_FOR_QUOTES, REPLACEMENT_TO_NULL_STR);
     }
 
     private boolean isFirstString(String str) {
