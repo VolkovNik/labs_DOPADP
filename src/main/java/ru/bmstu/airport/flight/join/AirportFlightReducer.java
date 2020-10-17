@@ -12,7 +12,7 @@ public class AirportFlightReducer extends Reducer<AirportWritableComparable, Tex
     @Override
     protected void reduce(AirportWritableComparable key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
         Iterator<Text> iter = values.iterator();
-        
+        Text systemInfo = values
         StringBuilder naruto = new StringBuilder("lab2: ");
         while (iter.hasNext()) {
             iter.next();
