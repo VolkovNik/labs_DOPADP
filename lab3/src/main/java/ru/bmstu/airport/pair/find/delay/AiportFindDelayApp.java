@@ -39,7 +39,8 @@ public class AiportFindDelayApp {
 
         JavaRDD<String> test = airportsTable.filter(string -> !isFirstString(string)).
                 map(string -> {
-                    String airportValues = deleteQuotes(string);
+                    String[] airportValues = string.split(REGEX_SPLITTER_CVS);
+                    
                     return string;
                 });
 
