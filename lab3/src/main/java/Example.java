@@ -32,8 +32,8 @@ public class Example {
         );
 
         // Загружаем в словарь
-
-        JavaRDD<String> dictionaryFile = sc.textFile("words.txt");
+        JavaRDD<String> dictionaryFile = sc.textFile("/words.txt");
+        
         JavaPairRDD<String, Long> dictionary =
                 dictionaryFile.mapToPair(
                         s -> new Tuple2<>(s,1l)
