@@ -26,6 +26,10 @@ public class AiportFindDelayApp {
         return str.equals(FLAG_FIRST_STRING);
     }
 
+    private static String deleteQuotes(String str) {
+        return str.replaceAll(REGEX_FOR_QUOTES, REPLACEMENT_TO_NULL_STR);
+    }
+
     public static void main(String[] args) {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
@@ -35,7 +39,7 @@ public class AiportFindDelayApp {
 
         JavaRDD<String> test = airportsTable.filter(string -> !isFirstString(string)).
                 map(string -> {
-                    String airportValues = 
+                    String airportValues = deleteQuotes(string);
                     return string;
                 });
 
