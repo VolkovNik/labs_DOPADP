@@ -34,17 +34,17 @@ public class AiportFindDelayApp {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
 
-        JavaRDD<String> airportsTable = sc.textFile("AirportList.csv");
-        JavaRDD<String> flightTable = sc.textFile("FlightList.csv");
+        JavaRDD<String> airportsList = sc.textFile("AirportList.csv");
+        JavaRDD<String> flightList = sc.textFile("FlightList.csv");
 
-        JavaRDD<String> test = airportsTable.filter(string -> !isFirstString(string)).
+        JavaRDD<String> test = airportsList.filter(string -> !isFirstString(string)).
                 map(string -> {
                     String[] airportValues = string.split(REGEX_SPLITTER_CVS);
 
                     return deleteQuotes(airportValues[NAME_AIRPORT_COLUMN]);
                 });
 
-        //JavaRDD<String> flightString = flightTable.toString();
+        //JavaRDD<String> flightString = flightList.toString();
 
             test.saveAsTextFile("output");
         //flightString.saveAsTextFile("output");
