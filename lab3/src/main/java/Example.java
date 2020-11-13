@@ -31,6 +31,6 @@ public class Example {
                 (a, b) -> a + b
         );
 
-        
+        // Загружаем в словарь 
     }
 }
