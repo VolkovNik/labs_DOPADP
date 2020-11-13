@@ -45,8 +45,8 @@ public class AiportFindDelayApp {
                 });
 
         //JavaRDD<String> flightString = flightList.toString();
-
-            test.saveAsTextFile("output");
+        System.out.println("kek");
+            //test.saveAsTextFile("output");
         //flightString.saveAsTextFile("output");
 
 
