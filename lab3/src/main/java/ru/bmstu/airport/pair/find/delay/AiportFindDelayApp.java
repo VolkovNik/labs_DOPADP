@@ -38,7 +38,25 @@ public class AiportFindDelayApp {
     public static class FlightSerializable implements Serializable {
          private boolean cancelFlag;
          private boolean delayFlag;
-         private int delayTime;
+         private float delayTime;
+
+         FlightSerializable(boolean cancelFlag, boolean delayFlag, float delayTime) {
+             this.cancelFlag = cancelFlag;
+             this.delayFlag = delayFlag;
+             this.delayTime = delayTime;
+         }
+
+         boolean getCancelFlag() {
+             return cancelFlag;
+         }
+
+         boolean getDelayFlag() {
+             return delayFlag;
+         }
+
+         float getDelayTime() {
+             return delayTime;
+         }
     }
 
     public static void main(String[] args) {
