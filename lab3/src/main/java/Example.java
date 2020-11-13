@@ -13,7 +13,7 @@ public class Example {
         JavaSparkContext sc = new JavaSparkContext(conf);
 
         // Загрузка
-        JavaRDD<String> distFile = sc.textFile("war-and-peace-1.txt");
+        JavaRDD<String> distFile = sc.textFile("/war-and-peace-1.txt");
 
         //Разбиение строки на слова
         JavaRDD<String> splitted = distFile.flatMap(
