@@ -36,7 +36,7 @@ public class AiportFindDelayApp {
     }
 
     public static class FlightSerializable implements Serializable {
-         
+         private 
     }
 
     public static void main(String[] args) {
