@@ -23,7 +23,7 @@ public class AiportFindDelayApp {
     private static final String FLAG_FIRST_STRING = "Code";
 
     private static boolean isFirstString(String str) {
-        return str.equals(FLAG_FIRST_STRING);
+        return str.contains(FLAG_FIRST_STRING);
     }
 
     private static String deleteQuotes(String str) {
