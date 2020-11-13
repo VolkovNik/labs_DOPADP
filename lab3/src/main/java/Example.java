@@ -31,6 +31,12 @@ public class Example {
                 (a, b) -> a + b
         );
 
-        // Загружаем в словарь 
+        // Загружаем в словарь
+
+        JavaRDD<String> dictionaryFile = sc.textFile("words.txt");
+        JavaPairRDD<String, Long> dictionary =
+                dictionaryFile.mapToPair(
+                        s -> new Tuple2<>(s,1l)
+                );
     }
 }
