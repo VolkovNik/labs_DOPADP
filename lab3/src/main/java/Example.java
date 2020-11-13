@@ -42,6 +42,6 @@ public class Example {
         // Производим операцию join со словарем
         JavaPairRDD<String, Tuple2<Long, Long>> joinValue = dictionary.join(collectedWords);
 
-        
+        //Печатаем результат
     }
 }
