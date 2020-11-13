@@ -23,7 +23,7 @@ public class AiportFindDelayApp {
         JavaRDD<String> airportsTable = sc.textFile("AirportList.csv");
         JavaRDD<String> flightTable = sc.textFile("FlightList.csv");
 
-        JavaRDD<String> flightString = flightTable.filter(t -> t.equals(FLAG_FIRST_STRING));
+        JavaRDD<String> flightString = flightTable.toString();
 
         flightString.saveAsTextFile("output");
 
