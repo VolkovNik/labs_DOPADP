@@ -37,6 +37,8 @@ public class AiportFindDelayApp {
         JavaRDD<String> airportsList = sc.textFile("AirportList.csv");
         JavaRDD<String> flightList = sc.textFile("FlightList.csv");
 
+        JavaRDD<Integer, String>
+
         JavaRDD<String> test = airportsList.filter(string -> !isFirstString(string)).
                 map(string -> {
                     String[] airportValues = string.split(REGEX_SPLITTER_CVS);
