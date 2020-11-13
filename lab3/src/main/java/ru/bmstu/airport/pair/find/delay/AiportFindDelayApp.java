@@ -40,8 +40,8 @@ public class AiportFindDelayApp {
         JavaRDD<String> airportsList = sc.textFile("AirportList.csv");
         JavaRDD<String> flightList = sc.textFile("FlightList.csv");
 
-        JavaRDD<Object> airportsInformation = airportsList.filter(string -> !isFirstString(string)).
-                map(string -> {
+        JavaPairRDD<Integer, String> airportsInformation = airportsList.filter(string -> !isFirstString(string)).
+                mapToPair(string -> {
                     String[] airportValues = string.split(REGEX_SPLITTER_CVS);
                     Integer airportId = Integer.parseInt(deleteQuotes(airportValues[ID_AIRPORT_COLUMN]));
                     String airportName = airportValues[NAME_AIRPORT_COLUMN];
@@ -49,17 +49,19 @@ public class AiportFindDelayApp {
                     return new Tuple2<>(airportId, airportName);
                 });
 
-        JavaRDD<String> test = airportsList.filter(string -> !isFirstString(string)).
-                map(string -> {
-                    String[] airportValues = string.split(REGEX_SPLITTER_CVS);
-
-                    return deleteQuotes(airportValues[NAME_AIRPORT_COLUMN]);
-                });
+//        JavaRDD<String> test = airportsList.filter(string -> !isFirstString(string)).
+//                map(string -> {
+//                    String[] airportValues = string.split(REGEX_SPLITTER_CVS);
+//
+//                    return deleteQuotes(airportValues[NAME_AIRPORT_COLUMN]);
+//                });
 
         //JavaRDD<String> flightString = flightList.toString();
-        System.out.println("kek");
+        //System.out.println("kek");
             //test.saveAsTextFile("output");
         //flightString.saveAsTextFile("output");
+
+        airportsInformation.saveAsTextFile("output");
 
 
     }
