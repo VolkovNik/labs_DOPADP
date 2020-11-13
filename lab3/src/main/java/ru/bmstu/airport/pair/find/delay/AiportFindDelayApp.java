@@ -42,7 +42,7 @@ public class AiportFindDelayApp {
         JavaPairRDD<Integer, String> airportsInformation = airportsList.filter(string -> !isFirstString(string)).
                 map(string -> {
                     String[] airportValues = string.split(REGEX_SPLITTER_CVS);
-                    
+                    Integer airportId = deleteQuotes(airportValues[ID_AIRPORT_COLUMN]);
                 })
 
         JavaRDD<String> test = airportsList.filter(string -> !isFirstString(string)).
