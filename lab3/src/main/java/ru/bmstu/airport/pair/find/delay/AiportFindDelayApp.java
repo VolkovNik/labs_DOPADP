@@ -22,6 +22,10 @@ public class AiportFindDelayApp {
     private static final int INDICATOR_AIRPORT_MAPPER = 0;
     private static final String FLAG_FIRST_STRING = "Code";
 
+    private static boolean isFirstString(String str) {
+        return str.equals(FLAG_FIRST_STRING);
+    }
+
     public static void main(String[] args) {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
@@ -29,9 +33,9 @@ public class AiportFindDelayApp {
         JavaRDD<String> airportsTable = sc.textFile("AirportList.csv");
         JavaRDD<String> flightTable = sc.textFile("FlightList.csv");
 
-        JavaRDD<String> test = airportsTable.filter(string -> !string.contains("Code")).
+        JavaRDD<String> test = airportsTable.filter(string -> !isFirstString(string)).
                 map(string -> {
-
+                    
                     return string;
                 });
 
