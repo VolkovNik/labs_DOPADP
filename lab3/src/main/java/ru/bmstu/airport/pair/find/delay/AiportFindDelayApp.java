@@ -1,6 +1,7 @@
 package ru.bmstu.airport.pair.find.delay;
 
 import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 
@@ -37,7 +38,7 @@ public class AiportFindDelayApp {
         JavaRDD<String> airportsList = sc.textFile("AirportList.csv");
         JavaRDD<String> flightList = sc.textFile("FlightList.csv");
 
-        JavaRDD<Integer, String>
+        JavaPairRDD<Integer, String>
 
         JavaRDD<String> test = airportsList.filter(string -> !isFirstString(string)).
                 map(string -> {
