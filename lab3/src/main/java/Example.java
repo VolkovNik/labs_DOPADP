@@ -12,5 +12,7 @@ public class Example {
         JavaRDD<String> distFile = sc.textFile("war-and-peace-1.txt");
 
         //Разбиение строки на слова
+        JavaRDD<String> splitted = distFile.flatMap(Hadoop
+        );
     }
 }
