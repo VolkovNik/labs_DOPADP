@@ -1,6 +1,8 @@
 import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
+import scala.Tuple2;
 
 import java.util.Arrays;
 
@@ -18,6 +20,10 @@ public class Example {
                 s -> Arrays.stream(s.split(" ")).iterator()
         );
 
-        // Отображение слов в пару 
+        // Отображение слов в пару (слово, 1)
+        JavaPairRDD<String, Long> wordsWithCount =
+                splitted.mapToPair(
+                        s -> new Tuple2<>(s, 1L)
+                );
     }
 }
