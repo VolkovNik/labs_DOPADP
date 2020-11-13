@@ -10,5 +10,7 @@ public class Example {
 
         // Загрузка
         JavaRDD<String> distFile = sc.textFile("war-and-peace-1.txt");
+
+        //Разбиение строки на слова
     }
 }
