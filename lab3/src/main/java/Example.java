@@ -18,6 +18,6 @@ public class Example {
                 s -> Arrays.stream(s.split(" ")).iterator()
         );
 
-        
+        // Отображение слова
     }
 }
