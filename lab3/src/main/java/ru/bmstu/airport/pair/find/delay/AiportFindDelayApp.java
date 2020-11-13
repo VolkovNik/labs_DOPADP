@@ -7,6 +7,8 @@ import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import scala.Tuple2;
 
+import java.io.Serializable;
+
 public class AiportFindDelayApp {
     private static final String REGEX_SPLITTER_CVS = ",";
     //private static final String FLAG_FIRST_STRING = "\"YEAR\"";
@@ -31,6 +33,10 @@ public class AiportFindDelayApp {
 
     private static String deleteQuotes(String str) {
         return str.replaceAll(REGEX_FOR_QUOTES, REPLACEMENT_TO_NULL_STR);
+    }
+
+    public static class FlightSerializable implements Serializable {
+        
     }
 
     public static void main(String[] args) {
