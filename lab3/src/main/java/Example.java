@@ -25,5 +25,7 @@ public class Example {
                 splitted.mapToPair(
                         s -> new Tuple2<>(s, 1L)
                 );
+
+        //Считаем одинаковые слова 
     }
 }
