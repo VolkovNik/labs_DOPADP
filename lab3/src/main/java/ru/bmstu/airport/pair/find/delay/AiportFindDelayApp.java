@@ -25,7 +25,7 @@ public class AiportFindDelayApp {
 
         JavaRDD<String[]> airportArray = airportsTable.map(line -> line.split("\t"));
 
-        JavaRDD<String> airportString = airportsTable.filter(t -> t[0].)
+        JavaRDD<String> airportString = airportArray.filter(t -> t[0] == "Code");
 
         //JavaRDD<String> flightString = flightTable.toString();
 
