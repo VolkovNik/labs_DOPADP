@@ -1,5 +1,6 @@
 package ru.bmstu.airport.pair.find.delay;
 
+import org.apache.hadoop.yarn.webapp.hamlet.Hamlet;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
@@ -38,7 +39,11 @@ public class AiportFindDelayApp {
         JavaRDD<String> airportsList = sc.textFile("AirportList.csv");
         JavaRDD<String> flightList = sc.textFile("FlightList.csv");
 
-        JavaPairRDD<Integer, String>
+        JavaPairRDD<Integer, String> airportsInformation = airportsList.filter(string -> !isFirstString(string)).
+                map(string -> {
+                    String[] airportValues = string.split(REGEX_SPLITTER_CVS);
+                    
+                })
 
         JavaRDD<String> test = airportsList.filter(string -> !isFirstString(string)).
                 map(string -> {
