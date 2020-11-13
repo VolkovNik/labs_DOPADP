@@ -25,7 +25,7 @@ public class AiportFindDelayApp {
 
         JavaRDD<String> test = airportsTable.filter(string -> !string.contains("Code")).
                 map(string -> {
-
+                    
                     return string;
                 });
 
