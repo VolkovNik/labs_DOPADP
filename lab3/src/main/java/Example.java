@@ -38,5 +38,7 @@ public class Example {
                 dictionaryFile.mapToPair(
                         s -> new Tuple2<>(s,1l)
                 );
+
+        // Производим операцию join со словарем
     }
 }
