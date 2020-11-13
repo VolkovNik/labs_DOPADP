@@ -12,37 +12,11 @@ public class Example {
         SparkConf conf = new SparkConf().setAppName("example");
         JavaSparkContext sc = new JavaSparkContext(conf);
 
-        // Загрузка
-        JavaRDD<String> distFile = sc.textFile("/war-and-peace-1.txt");
+        JavaRDD<String> inputFile = sc.textFile("war-and-peace-1.txt");
+        JavaRDD<String> wordsList = inputFile.flatMap(content -> Arrays.asList(content.split(" ")).iterator());
 
-        //Разбиение строки на слова
-        JavaRDD<String> splitted = distFile.flatMap(
-                s -> Arrays.stream(s.split(" ")).iterator()
-        );
+        //JavaPairRDD<String, Long> wordCount = wordsList.mapToPair(t -> new Tuple2<>(t, 1L)).reduceByKey((x, y) -> x + y);
 
-        // Отображение слов в пару (слово, 1)
-        JavaPairRDD<String, Long> wordsWithCount =
-                splitted.mapToPair(
-                        s -> new Tuple2<>(s, 1L)
-                );
-
-        //Считаем одинаковые слова
-        JavaPairRDD<String, Long> collectedWords = wordsWithCount.reduceByKey (
-                (a, b) -> a + b
-        );
-
-        // Загружаем в словарь
-        JavaRDD<String> dictionaryFile = sc.textFile("/words.txt");
-        
-        JavaPairRDD<String, Long> dictionary =
-                dictionaryFile.mapToPair(
-                        s -> new Tuple2<>(s,1l)
-                );
-
-        // Производим операцию join со словарем
-        JavaPairRDD<String, Tuple2<Long, Long>> joinValue = dictionary.join(collectedWords);
-
-        //Печатаем результат
-        System.out.println("result="+joinValue.collect());
+        wordsList.saveAsTextFile("WordCount");
     }
 }
