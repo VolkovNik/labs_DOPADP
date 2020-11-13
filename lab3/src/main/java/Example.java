@@ -43,5 +43,6 @@ public class Example {
         JavaPairRDD<String, Tuple2<Long, Long>> joinValue = dictionary.join(collectedWords);
 
         //Печатаем результат
+        System.out.println("result="+jo inValue.collect(Hadoop ));
     }
 }
