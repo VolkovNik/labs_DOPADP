@@ -26,6 +26,9 @@ public class Example {
                         s -> new Tuple2<>(s, 1L)
                 );
 
-        //Считаем одинаковые слова 
+        //Считаем одинаковые слова
+        JavaPairRDD<String, Long> collectedWords = wordsWithCount.reduceByKey (
+                (a, b) → a + b
+        );
     }
 }
