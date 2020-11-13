@@ -45,8 +45,8 @@ public class AiportFindDelayApp {
                     String[] airportValues = string.split(REGEX_SPLITTER_CVS);
                     Integer airportId = Integer.parseInt(deleteQuotes(airportValues[ID_AIRPORT_COLUMN]));
                     String airportName = airportValues[NAME_AIRPORT_COLUMN];
-                    return new Tuple2<>()
-                })
+                    return new Tuple2<>(airportId, airportName);
+                });
 
         JavaRDD<String> test = airportsList.filter(string -> !isFirstString(string)).
                 map(string -> {
