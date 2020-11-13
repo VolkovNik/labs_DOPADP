@@ -28,7 +28,9 @@ public class Example {
 
         //Считаем одинаковые слова
         JavaPairRDD<String, Long> collectedWords = wordsWithCount.reduceByKey (
-                (a, b) → a + b
+                (a, b) -> a + b
         );
+
+        
     }
 }
