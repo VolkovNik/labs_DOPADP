@@ -36,7 +36,8 @@ public class AiportFindDelayApp {
     }
 
     public static class FlightSerializable implements Serializable {
-         private boolean cancelled;
+         private boolean cancelFlag;
+         private boolean delayFlag;
          private int delayTime;
     }
 
