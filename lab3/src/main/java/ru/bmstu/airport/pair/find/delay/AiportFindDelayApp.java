@@ -30,3 +30,4 @@ public class AiportFindDelayApp {
 
     }
 }
+//ru.bmstu.airport.pair.find.delay
