@@ -5,6 +5,7 @@ import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
+import scala.Tuple2;
 
 public class AiportFindDelayApp {
     private static final String REGEX_SPLITTER_CVS = ",";
@@ -44,7 +45,7 @@ public class AiportFindDelayApp {
                     String[] airportValues = string.split(REGEX_SPLITTER_CVS);
                     Integer airportId = Integer.parseInt(deleteQuotes(airportValues[ID_AIRPORT_COLUMN]));
                     String airportName = airportValues[NAME_AIRPORT_COLUMN];
-                    return new T
+                    return new Tuple2<>()
                 })
 
         JavaRDD<String> test = airportsList.filter(string -> !isFirstString(string)).
