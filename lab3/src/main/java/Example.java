@@ -17,5 +17,7 @@ public class Example {
         JavaRDD<String> splitted = distFile.flatMap(
                 s -> Arrays.stream(s.split(" ")).iterator()
         );
+
+        
     }
 }
