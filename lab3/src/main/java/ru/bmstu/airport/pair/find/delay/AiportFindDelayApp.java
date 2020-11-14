@@ -122,6 +122,10 @@ public class AiportFindDelayApp {
             );
         }
 
+        public static float avg() {
+            return sumDelays
+        }
+
     }
 
     public static void main(String[] args) {
@@ -178,9 +182,7 @@ public class AiportFindDelayApp {
         );
 
         test.reduceByKey(
-                value -> {
-                   
-                }
+               value -> value.
         )
 
         test.saveAsTextFile("output");
