@@ -6,8 +6,6 @@ import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import scala.Tuple2;
 
-import java.io.Serializable;
-
 public class AiportFindDelayApp {
     private static final String REGEX_SPLITTER_CVS = ",";
     private static final String FLAG_FIRST_STRING_FLIGHT_TABLE = "YEAR";
@@ -62,24 +60,7 @@ public class AiportFindDelayApp {
             return ZERO_TIME;
     }
 
-    public static class FlightSerializable implements Serializable {
-         private boolean cancelFlag;
-         private float delayTime;
 
-         FlightSerializable(boolean cancelFlag, float delayTime) {
-             this.cancelFlag = cancelFlag;
-             //this.delayFlag = delayFlag;
-             this.delayTime = delayTime;
-         }
-
-         boolean getCancelFlag() {
-             return cancelFlag;
-         }
-
-         float getDelayTime() {
-             return delayTime;
-         }
-    }
 
     public static void main(String[] args) {
         SparkConf conf = new SparkConf().setAppName("lab3");
