@@ -122,7 +122,7 @@ public class AiportFindDelayApp {
             //test.saveAsTextFile("output");
         //flightString.saveAsTextFile("output");
 
-        flightInformation.saveAsTextFile("output");
+        flightInformation.values().saveAsTextFile("output");
 
         //airportsInformation.saveAsTextFile("output");
 
