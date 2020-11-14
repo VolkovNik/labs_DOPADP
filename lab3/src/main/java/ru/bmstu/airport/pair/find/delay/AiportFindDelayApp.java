@@ -30,8 +30,16 @@ public class AiportFindDelayApp {
         return str.contains(FLAG_FIRST_STRING_AIRPORT_TABLE);
     }
 
+    private static boolean isFirstStringFlightTable(String str) {
+        return str.equals(FLAG_FIRST_STRING_FLIGHT_TABLE);
+    }
+
     private static String deleteQuotes(String str) {
         return str.replaceAll(REGEX_FOR_QUOTES, REPLACEMENT_TO_NULL_STR);
+    }
+
+    private String[] getArrayOfValues(String strValue) {
+        return strValue.split(REGEX_SPLITTER_CVS);
     }
 
     public static class FlightSerializable implements Serializable {
@@ -74,7 +82,11 @@ public class AiportFindDelayApp {
                     return new Tuple2<>(airportId, airportName);
                 });
 
-        JavaPairRDD<Tuple2<Integer, Integer>, FlightSerializable> flightInformation = flightList.filter(string != is)
+        JavaPairRDD<Tuple2<Integer, Integer>, FlightSerializable> flightInformation =
+                flightList.filter(string -> !isFirstStringFlightTable(string)).
+                mapToPair(string -> {
+                    String[] flightValues = string.
+                });
 
 //        JavaRDD<String> test = airportsList.filter(string -> !isFirstString(string)).
 //                map(string -> {
