@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 public class AiportFindDelayApp {
     private static final String REGEX_SPLITTER_CVS = ",";
-    private static final String FLAG_FIRST_STRING_FLIGHT_TABLE = "\"YEAR\"";
+    private static final String FLAG_FIRST_STRING_FLIGHT_TABLE = "YEAR";
     private static final int ZERO_COLUMN = 0;
     private static final int ID_AIRPORT_COLUMN_FOR_DELAY = 14;
     private static final int ID_AIRPORT_ORIGIN_COLUMN = 11;
