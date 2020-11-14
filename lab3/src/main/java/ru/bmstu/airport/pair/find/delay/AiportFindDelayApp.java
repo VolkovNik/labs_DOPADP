@@ -86,7 +86,7 @@ public class AiportFindDelayApp {
                 flightList.filter(string -> !isFirstStringFlightTable(string)).
                 mapToPair(string -> {
                     String[] flightValues = getArrayOfValues(string);
-                    
+                    Integer destAirportId = flightValues[]
                     //FlightSerializable flightData = new FlightSerializable(flightValues)
                 });
 
