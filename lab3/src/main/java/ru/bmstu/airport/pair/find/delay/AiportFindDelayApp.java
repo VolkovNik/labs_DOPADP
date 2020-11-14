@@ -99,7 +99,7 @@ public class AiportFindDelayApp {
                     Integer originalAirportId = Integer.parseInt(flightValues[ID_AIRPORT_ORIGIN_COLUMN]);
 
                     float cancelCode = getCancelCode(flightValues[CANCELLED_CODE_COLUMN]);
-                    boolean cancelFlag = 
+                    boolean cancelFlag = isCancelled(cancelCode);
 
                     //FlightSerializable flightData = new FlightSerializable(flightValues)
                 });
