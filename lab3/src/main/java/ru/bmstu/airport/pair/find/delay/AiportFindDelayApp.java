@@ -94,6 +94,8 @@ public class AiportFindDelayApp {
     }
 
 
+    
+
     public static class TestingCombine implements Serializable {
         private float sumDelays;
         private int counter;
@@ -188,7 +190,7 @@ public class AiportFindDelayApp {
                     return value._2().getSumDelays() / (float) value._2().getCounter();
                 }
         );
-        
+
         kek.saveAsTextFile("output");
         //test.saveAsTextFile("output");
 
