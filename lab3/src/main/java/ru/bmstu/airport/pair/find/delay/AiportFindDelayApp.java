@@ -82,7 +82,8 @@ public class AiportFindDelayApp {
         JavaRDD<String> airportsList = sc.textFile("AirportList.csv");
         JavaRDD<String> flightList = sc.textFile("FlightList.csv");
 
-        JavaPairRDD<Integer, String> airportsInformation = airportsList.filter(string -> !isFirstStringAirportTable(string)).
+        JavaPairRDD<Integer, String> airportsInformation =
+                airportsList.filter(string -> !isFirstStringAirportTable(string)).
                 mapToPair(string -> {
                     String[] airportValues = string.split(REGEX_SPLITTER_CVS);
                     Integer airportId = Integer.parseInt(deleteQuotes(airportValues[ID_AIRPORT_COLUMN_FOR_NAME]));
