@@ -1,6 +1,5 @@
 package ru.bmstu.airport.pair.find.delay;
 
-import org.apache.hadoop.yarn.webapp.hamlet.Hamlet;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
@@ -11,7 +10,7 @@ import java.io.Serializable;
 
 public class AiportFindDelayApp {
     private static final String REGEX_SPLITTER_CVS = ",";
-    //private static final String FLAG_FIRST_STRING = "\"YEAR\"";
+    private static final String FLAG_FIRST_STRING_FLIGHT_TABLE = "\"YEAR\"";
     private static final int ZERO_COLUMN = 0;
     //private static final int ID_AIRPORT_COLUMN = 14;
     private static final int CANCELLED_COLUMN = 19;
@@ -25,10 +24,10 @@ public class AiportFindDelayApp {
     private static final int ID_AIRPORT_COLUMN = 0;
     private static final int NAME_AIRPORT_COLUMN = 1;
     private static final int INDICATOR_AIRPORT_MAPPER = 0;
-    private static final String FLAG_FIRST_STRING = "Code";
+    private static final String FLAG_FIRST_STRING_AIRPORT_TABLE = "Code";
 
-    private static boolean isFirstString(String str) {
-        return str.contains(FLAG_FIRST_STRING);
+    private static boolean isFirstStringAirportTable(String str) {
+        return str.contains(FLAG_FIRST_STRING_AIRPORT_TABLE);
     }
 
     private static String deleteQuotes(String str) {
@@ -66,7 +65,7 @@ public class AiportFindDelayApp {
         JavaRDD<String> airportsList = sc.textFile("AirportList.csv");
         JavaRDD<String> flightList = sc.textFile("FlightList.csv");
 
-        JavaPairRDD<Integer, String> airportsInformation = airportsList.filter(string -> !isFirstString(string)).
+        JavaPairRDD<Integer, String> airportsInformation = airportsList.filter(string -> !isFirstStringAirportTable(string)).
                 mapToPair(string -> {
                     String[] airportValues = string.split(REGEX_SPLITTER_CVS);
                     Integer airportId = Integer.parseInt(deleteQuotes(airportValues[ID_AIRPORT_COLUMN]));
@@ -74,6 +73,8 @@ public class AiportFindDelayApp {
 
                     return new Tuple2<>(airportId, airportName);
                 });
+
+        JavaPairRDD<Tuple2<Integer, Integer>, FlightSerializable> flightInformation = flightList.filter(string != is)
 
 //        JavaRDD<String> test = airportsList.filter(string -> !isFirstString(string)).
 //                map(string -> {
