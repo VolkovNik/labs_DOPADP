@@ -122,8 +122,8 @@ public class AiportFindDelayApp {
             );
         }
 
-        public static float avg() {
-            return sumDelays
+        public float avg() {
+            return sumDelays / (float)counter;
         }
 
     }
@@ -181,9 +181,7 @@ public class AiportFindDelayApp {
 
         );
 
-        test.reduceByKey(
-               value -> value.
-        )
+        test.map()
 
         test.saveAsTextFile("output");
 
