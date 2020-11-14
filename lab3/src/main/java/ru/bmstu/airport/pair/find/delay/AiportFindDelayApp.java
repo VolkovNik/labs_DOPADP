@@ -92,6 +92,8 @@ public class AiportFindDelayApp {
         }
     }
 
+    public static class Test
+
     public static void main(String[] args) {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
