@@ -188,8 +188,7 @@ public class AiportFindDelayApp {
                     return value._2().getSumDelays() / (float) value._2().getCounter();
                 }
         );
-
-        new Str;
+        
         kek.saveAsTextFile("output");
         //test.saveAsTextFile("output");
 
