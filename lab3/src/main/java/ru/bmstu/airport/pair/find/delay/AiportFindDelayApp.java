@@ -111,9 +111,11 @@ public class AiportFindDelayApp {
 
         public static TestingCombine addValue(TestingCombine a, float delay) {
             return new TestingCombine(
-                    a.getSumDelays() + delay, 
-            )
+                    a.getSumDelays() + delay, a.getCounter() + 1
+            );
         }
+
+        
 
     }
 
