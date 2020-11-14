@@ -94,20 +94,20 @@ public class AiportFindDelayApp {
 
 
     public static class FlightDataCombined implements Serializable {
-        private float sumDelays;
+        private float maxDelay;
         private int counterFlight;
         private int counterCancelled;
         private int counterDelayed;
 
-        FlightDataCombined(float sumDelays, int counterFlight, int counterCancelled, int counterDelayed) {
-            this.sumDelays = sumDelays;
+        FlightDataCombined(float maxDelay, int counterFlight, int counterCancelled, int counterDelayed) {
+            this.maxDelay = maxDelay;
             this.counterFlight = counterFlight;
             this.counterCancelled = counterCancelled;
             this.counterDelayed = counterDelayed;
         }
 
-        public float getSumDelays() {
-            return sumDelays;
+        public float getMaxDelay() {
+            return maxDelay;
         }
 
         public int getCounterDelayed() {
@@ -122,11 +122,17 @@ public class AiportFindDelayApp {
             return counterFlight;
         }
 
-        public static FlightDataCombined addValue (FlightDataCombined data, float delayTime) {
-            return new FlightDataCombined(data.getSumDelays()+delayTime,
+        public static FlightDataCombined addValue (FlightDataCombined data, float maxDelay, int counterCancelled, int counterDelayed) {
+            return new FlightDataCombined(Math.max(data.getMaxDelay(),maxDelay),
                     data.getCounterFlight() + 1,
-                    data.getCounterCancelled() + )
+                    data.getCounterCancelled() + counterCancelled,
+                    data.counterDelayed + counterDelayed);
         }
+
+        public static FlightDataCombined add (FlightDataCombined first, FlightDataCombined second) {
+            
+        }
+
     }
 
     public static class TestingCombine implements Serializable {
