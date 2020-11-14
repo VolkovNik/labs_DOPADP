@@ -66,11 +66,13 @@ public class AiportFindDelayApp {
         private float timeDelay;
         private int counterDelayed;
         private int counterCancelled;
+        private int counterFlights;
 
-        Testing(float timeDelay, int counterDelayed, int counterCancelled) {
+        Testing(float timeDelay, int counterDelayed, int counterCancelled, int counterFlights) {
             this.timeDelay = timeDelay;
             this.counterDelayed = counterDelayed;
             this.counterCancelled = counterCancelled;
+            this.counterFlights = counterFlights;
         }
 
         float getTimeDelay() {
@@ -83,6 +85,10 @@ public class AiportFindDelayApp {
 
         public int getCounterDelayed() {
             return counterDelayed;
+        }
+
+        public int getCounterFlights() {
+            return counterFlights;
         }
     }
 
