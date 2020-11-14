@@ -13,6 +13,7 @@ public class AiportFindDelayApp {
     private static final String FLAG_FIRST_STRING_FLIGHT_TABLE = "\"YEAR\"";
     private static final int ZERO_COLUMN = 0;
     private static final int ID_AIRPORT_COLUMN_FOR_DELAY = 14;
+    private static final int ID_AIRPORT_ORIGIN_COLUMN = 11;
     private static final int CANCELLED_COLUMN = 19;
     private static final int ARR_DELAY_COLUMN = 18;
     private static final String EMPTY_STRING = "";
@@ -87,7 +88,9 @@ public class AiportFindDelayApp {
                 mapToPair(string -> {
                     String[] flightValues = getArrayOfValues(string);
                     Integer destAirportId = Integer.parseInt(flightValues[ID_AIRPORT_COLUMN_FOR_DELAY]);
-                    Integer originalAirportId = Integer.parseInt(flightValues[])
+                    Integer originalAirportId = Integer.parseInt(flightValues[ID_AIRPORT_ORIGIN_COLUMN]);
+
+                    
 
                     //FlightSerializable flightData = new FlightSerializable(flightValues)
                 });
