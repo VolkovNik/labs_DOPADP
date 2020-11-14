@@ -171,8 +171,8 @@ public class AiportFindDelayApp {
                 flightInformation.combineByKey(
                         p -> new Testing(p.getDelayTime(), 1),
                         (combine, p) -> TestingCombine.addValue(combine, p.getDelayTime()),
-                        
-                )
+                        TestingCombine::add
+                );
 
         test.saveAsTextFile("output");
 
