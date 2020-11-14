@@ -138,7 +138,7 @@ public class AiportFindDelayApp {
                             first.getCounterDelayed() + second.getCounterDelayed());
         }
 
-        
+
 
     }
 
@@ -220,6 +220,11 @@ public class AiportFindDelayApp {
                         (combin, p) -> TestingCombine.addValue(combin, p.getDelayTime()),
                         TestingCombine::add
                 );
+
+        JavaPairRDD<Tuple2<Integer, Integer>, FlightDataCombined> flightInformationCombined =
+                flightInformation.combineByKey(
+                        value -> new FlightDataCombined(value.getDelayTime(),)
+                )
 
 
         JavaPairRDD<Integer, Float> test = combine.values().mapToPair(
