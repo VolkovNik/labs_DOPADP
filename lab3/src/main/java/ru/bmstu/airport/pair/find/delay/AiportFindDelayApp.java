@@ -14,7 +14,7 @@ public class AiportFindDelayApp {
     private static final int ZERO_COLUMN = 0;
     private static final int ID_AIRPORT_COLUMN_FOR_DELAY = 14;
     private static final int ID_AIRPORT_ORIGIN_COLUMN = 11;
-    private static final int CANCELLED_COLUMN = 19;
+    private static final int CANCELLED_CODE_COLUMN = 19;
     private static final int ARR_DELAY_COLUMN = 18;
     private static final String EMPTY_STRING = "";
     private static final float CANCEL_CODE = 1;
@@ -88,8 +88,6 @@ public class AiportFindDelayApp {
                     Integer airportId = Integer.parseInt(deleteQuotes(airportValues[ID_AIRPORT_COLUMN_FOR_NAME]));
                     String airportName = airportValues[NAME_AIRPORT_COLUMN];
 
-                    float cancelledCode = getCanc
-
                     return new Tuple2<>(airportId, airportName);
                 });
 
@@ -100,7 +98,8 @@ public class AiportFindDelayApp {
                     Integer destAirportId = Integer.parseInt(flightValues[ID_AIRPORT_COLUMN_FOR_DELAY]);
                     Integer originalAirportId = Integer.parseInt(flightValues[ID_AIRPORT_ORIGIN_COLUMN]);
 
-                    float cancelCode = getCancelCode(flightValues[])
+                    float cancelCode = getCancelCode(flightValues[CANCELLED_CODE_COLUMN]);
+                    boolean cancelFlag = 
 
                     //FlightSerializable flightData = new FlightSerializable(flightValues)
                 });
