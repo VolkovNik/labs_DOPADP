@@ -12,7 +12,7 @@ public class AiportFindDelayApp {
     private static final String REGEX_SPLITTER_CVS = ",";
     private static final String FLAG_FIRST_STRING_FLIGHT_TABLE = "\"YEAR\"";
     private static final int ZERO_COLUMN = 0;
-    //private static final int ID_AIRPORT_COLUMN = 14;
+    private static final int ID_AIRPORT_COLUMN_FOR_DELAY = 14;
     private static final int CANCELLED_COLUMN = 19;
     private static final int ARR_DELAY_COLUMN = 18;
     private static final String EMPTY_STRING = "";
@@ -21,7 +21,7 @@ public class AiportFindDelayApp {
     private static final int INDICATOR_FLIGHT_MAPPER = 1;
     private static final String REGEX_FOR_QUOTES = "^\"+|\"+$";
     private static final String REPLACEMENT_TO_NULL_STR = "";
-    private static final int ID_AIRPORT_COLUMN = 0;
+    private static final int ID_AIRPORT_COLUMN_FOR_NAME = 0;
     private static final int NAME_AIRPORT_COLUMN = 1;
     private static final int INDICATOR_AIRPORT_MAPPER = 0;
     private static final String FLAG_FIRST_STRING_AIRPORT_TABLE = "Code";
@@ -76,7 +76,7 @@ public class AiportFindDelayApp {
         JavaPairRDD<Integer, String> airportsInformation = airportsList.filter(string -> !isFirstStringAirportTable(string)).
                 mapToPair(string -> {
                     String[] airportValues = string.split(REGEX_SPLITTER_CVS);
-                    Integer airportId = Integer.parseInt(deleteQuotes(airportValues[ID_AIRPORT_COLUMN]));
+                    Integer airportId = Integer.parseInt(deleteQuotes(airportValues[ID_AIRPORT_COLUMN_FOR_NAME]));
                     String airportName = airportValues[NAME_AIRPORT_COLUMN];
 
                     return new Tuple2<>(airportId, airportName);
@@ -86,7 +86,9 @@ public class AiportFindDelayApp {
                 flightList.filter(string -> !isFirstStringFlightTable(string)).
                 mapToPair(string -> {
                     String[] flightValues = getArrayOfValues(string);
-                    Integer destAirportId = flightValues[]
+                    Integer destAirportId = Integer.parseInt(flightValues[ID_AIRPORT_COLUMN_FOR_DELAY]);
+                    Integer originalAirportId = Integer.parseInt(flightValues[])
+
                     //FlightSerializable flightData = new FlightSerializable(flightValues)
                 });
 
