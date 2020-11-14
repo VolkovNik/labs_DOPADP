@@ -51,6 +51,17 @@ public class AiportFindDelayApp {
         return cancelled == CANCEL_CODE;
     }
 
+    private static boolean isDelayed(String strDelay) {
+        return !strDelay.equals(EMPTY_STRING);
+    }
+
+    private static float getDelayTime(String str) {
+        if (isDelayed(str)) {
+            return Float.parseFloat(str);
+        } else
+            return ZERO_TIME;
+    }
+
     public static class FlightSerializable implements Serializable {
          private boolean cancelFlag;
          //private boolean delayFlag;
@@ -101,7 +112,7 @@ public class AiportFindDelayApp {
 
                     float cancelCode = getCancelCode(flightValues[CANCELLED_CODE_COLUMN]);
                     boolean cancelFlag = isCancelled(cancelCode);
-                    float delayTime = Float.parseFloat(flightValues[ARR_DELAY_COLUMN]);
+                    float delayTime = getDelayTime(flightValues[ARR_DELAY_COLUMN]);
 
                     FlightSerializable flightDelayData = new FlightSerializable(cancelFlag, delayTime);
 
