@@ -92,7 +92,26 @@ public class AiportFindDelayApp {
         }
     }
 
-    public static class Test
+    public static class TestingCombine implements Serializable {
+        private float sumDelays;
+        private int counter;
+
+        TestingCombine(float sumDelays, int counter) {
+            this.sumDelays = sumDelays;
+            this.counter = counter;
+        }
+
+        public float getSumDelays() {
+            return sumDelays;
+        }
+
+        public int getCounter() {
+            return counter;
+        }
+
+        
+
+    }
 
     public static void main(String[] args) {
         SparkConf conf = new SparkConf().setAppName("lab3");
