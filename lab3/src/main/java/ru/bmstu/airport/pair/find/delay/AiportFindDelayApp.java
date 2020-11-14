@@ -4,7 +4,6 @@ import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
-import scala.Tuple1;
 import scala.Tuple2;
 
 import java.io.Serializable;
@@ -94,10 +93,40 @@ public class AiportFindDelayApp {
     }
 
 
-    public static class flightDataCombined implements Serializable {
+    public static class FlightDataCombined implements Serializable {
         private float sumDelays;
         private int counterFlight;
-        private int 
+        private int counterCancelled;
+        private int counterDelayed;
+
+        FlightDataCombined(float sumDelays, int counterFlight, int counterCancelled, int counterDelayed) {
+            this.sumDelays = sumDelays;
+            this.counterFlight = counterFlight;
+            this.counterCancelled = counterCancelled;
+            this.counterDelayed = counterDelayed;
+        }
+
+        public float getSumDelays() {
+            return sumDelays;
+        }
+
+        public int getCounterDelayed() {
+            return counterDelayed;
+        }
+
+        public int getCounterCancelled() {
+            return counterCancelled;
+        }
+
+        public int getCounterFlight() {
+            return counterFlight;
+        }
+
+        public static FlightDataCombined addValue (FlightDataCombined data, float delayTime) {
+            return new FlightDataCombined(data.getSumDelays()+delayTime,
+                    data.getCounterFlight() + 1,
+                    )
+        }
     }
 
     public static class TestingCombine implements Serializable {
