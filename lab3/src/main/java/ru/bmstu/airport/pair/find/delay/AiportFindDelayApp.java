@@ -182,9 +182,9 @@ public class AiportFindDelayApp {
 
         );
 
-        combine.reduceByKey(
+        combine.map(
                 value -> {
-                    return (value.getSumDelays() / (float)value.getCounter());
+                    return value.avg();
                 }
         ).saveAsTextFile("output");
 
