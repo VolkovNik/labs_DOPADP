@@ -102,7 +102,9 @@ public class AiportFindDelayApp {
                     boolean cancelFlag = isCancelled(cancelCode);
                     float delayTime = Float.parseFloat(flightValues[ARR_DELAY_COLUMN]);
 
-                    return new Tuple2<>(new Tuple2<>)
+                    FlightSerializable flightDelayData = new FlightSerializable(cancelFlag, delayTime);
+
+                    return new Tuple2<>(new Tuple2<>(destAirportId, originalAirportId), flightDelayData);
 
                     //FlightSerializable flightData = new FlightSerializable(flightValues)
                 });
@@ -119,7 +121,9 @@ public class AiportFindDelayApp {
             //test.saveAsTextFile("output");
         //flightString.saveAsTextFile("output");
 
-        airportsInformation.saveAsTextFile("output");
+        flightInformation.saveAsTextFile("output");
+
+        //airportsInformation.saveAsTextFile("output");
 
 
     }
