@@ -94,7 +94,7 @@ public class AiportFindDelayApp {
     }
 
 
-    
+    public 
 
     public static class TestingCombine implements Serializable {
         private float sumDelays;
