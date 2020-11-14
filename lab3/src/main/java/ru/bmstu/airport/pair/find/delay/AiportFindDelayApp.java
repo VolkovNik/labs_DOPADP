@@ -32,7 +32,7 @@ public class AiportFindDelayApp {
     }
 
     private static boolean isFirstStringFlightTable(String str) {
-        return str.equals(FLAG_FIRST_STRING_FLIGHT_TABLE);
+        return str.contains(FLAG_FIRST_STRING_FLIGHT_TABLE);
     }
 
     private static String deleteQuotes(String str) {
