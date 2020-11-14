@@ -169,7 +169,8 @@ public class AiportFindDelayApp {
 
         JavaPairRDD<Tuple2<Integer, Integer>, TestingCombine> combine =
                 flightInformation.combineByKey(
-                        p -> new Testing(p.getDelayTime(), )
+                        p -> new Testing(p.getDelayTime(), 1),
+                        ()
                 )
 
         test.saveAsTextFile("output");
