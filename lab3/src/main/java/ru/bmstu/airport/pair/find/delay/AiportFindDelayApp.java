@@ -182,12 +182,13 @@ public class AiportFindDelayApp {
 
         );
 
-        combine.map(
+        JavaRDD<Float> kek = combine.map(
                 value -> {
-                    return value.avg();
+                    return value._2().getSumDelays() / (float) value._2().getCounter();
                 }
-        ).saveAsTextFile("output");
+        );
 
+        kek.saveAsTextFile("output");
         //test.saveAsTextFile("output");
 
 
