@@ -117,8 +117,9 @@ public class AiportFindDelayApp {
 
         public static TestingCombine add(TestingCombine a, TestingCombine b) {
             return new TestingCombine(
-                    
-            )
+                    a.getSumDelays() + b.getSumDelays(),
+                    a.getCounter() + a.getCounter()
+            );
         }
 
     }
@@ -165,6 +166,8 @@ public class AiportFindDelayApp {
                 }
 
         );
+
+        
 
         test.saveAsTextFile("output");
 
