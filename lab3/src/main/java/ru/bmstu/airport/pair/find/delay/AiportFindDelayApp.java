@@ -133,7 +133,11 @@ public class AiportFindDelayApp {
             //test.saveAsTextFile("output");
         //flightString.saveAsTextFile("output");
 
-        flightInformation.values().saveAsTextFile("output");
+        JavaPairRDD<Boolean, String> test = flightInformation.values().mapToPair(
+                string -> {
+                    return new Tuple2<>(string.getCancelFlag(), float(string.getDelayTime()));
+                }
+        );
 
         //airportsInformation.saveAsTextFile("output");
 
