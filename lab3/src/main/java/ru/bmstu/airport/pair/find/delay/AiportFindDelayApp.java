@@ -122,16 +122,23 @@ public class AiportFindDelayApp {
             return counterFlight;
         }
 
-        public static FlightDataCombined addValue (FlightDataCombined data, float maxDelay, int counterCancelled, int counterDelayed) {
+        public static FlightDataCombined addValue (FlightDataCombined data, float maxDelay,
+                                                   int counterCancelled, int counterDelayed) {
             return new FlightDataCombined(Math.max(data.getMaxDelay(),maxDelay),
                     data.getCounterFlight() + 1,
                     data.getCounterCancelled() + counterCancelled,
-                    data.counterDelayed + counterDelayed);
+                    data.getCounterDelayed() + counterDelayed);
         }
 
         public static FlightDataCombined add (FlightDataCombined first, FlightDataCombined second) {
-            
+            return new FlightDataCombined(
+                    Math.max(first.getMaxDelay(), second.getMaxDelay()),
+                            first.getCounterFlight() + second.getCounterFlight(),
+                            first.getCounterCancelled() + second.getCounterCancelled(),
+                            first.getCounterDelayed() + second.getCounterDelayed());
         }
+
+        
 
     }
 
