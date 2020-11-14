@@ -109,7 +109,9 @@ public class AiportFindDelayApp {
             return counter;
         }
 
-        public static TestingCombine addValue(TestingCombine)
+        public static TestingCombine addValue(TestingCombine a, float delay) {
+            
+        }
 
     }
 
