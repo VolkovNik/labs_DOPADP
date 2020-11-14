@@ -43,6 +43,17 @@ public class AiportFindDelayApp {
         return strValue.split(REGEX_SPLITTER_CVS);
     }
 
+    private float getCancelCode(String strCode) {
+        return Float.parseFloat(strCode);
+    }
+
+    private boolean isCancelled(float cancelled) {
+        if (cancelled == CANCEL_CODE) {
+            return true;
+        }
+        return false;
+    }
+
     public static class FlightSerializable implements Serializable {
          private boolean cancelFlag;
          //private boolean delayFlag;
@@ -80,6 +91,8 @@ public class AiportFindDelayApp {
                     Integer airportId = Integer.parseInt(deleteQuotes(airportValues[ID_AIRPORT_COLUMN_FOR_NAME]));
                     String airportName = airportValues[NAME_AIRPORT_COLUMN];
 
+                    
+
                     return new Tuple2<>(airportId, airportName);
                 });
 
@@ -90,7 +103,7 @@ public class AiportFindDelayApp {
                     Integer destAirportId = Integer.parseInt(flightValues[ID_AIRPORT_COLUMN_FOR_DELAY]);
                     Integer originalAirportId = Integer.parseInt(flightValues[ID_AIRPORT_ORIGIN_COLUMN]);
 
-                    
+
 
                     //FlightSerializable flightData = new FlightSerializable(flightValues)
                 });
