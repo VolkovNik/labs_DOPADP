@@ -125,7 +125,7 @@ public class AiportFindDelayApp {
         public static FlightDataCombined addValue (FlightDataCombined data, float delayTime) {
             return new FlightDataCombined(data.getSumDelays()+delayTime,
                     data.getCounterFlight() + 1,
-                    )
+                    data.getCounterCancelled() + )
         }
     }
 
