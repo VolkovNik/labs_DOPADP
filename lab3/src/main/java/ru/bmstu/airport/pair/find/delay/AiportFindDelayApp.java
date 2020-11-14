@@ -44,12 +44,12 @@ public class AiportFindDelayApp {
 
     public static class FlightSerializable implements Serializable {
          private boolean cancelFlag;
-         private boolean delayFlag;
+         //private boolean delayFlag;
          private float delayTime;
 
-         FlightSerializable(boolean cancelFlag, boolean delayFlag, float delayTime) {
+         FlightSerializable(boolean cancelFlag, float delayTime) {
              this.cancelFlag = cancelFlag;
-             this.delayFlag = delayFlag;
+             //this.delayFlag = delayFlag;
              this.delayTime = delayTime;
          }
 
@@ -57,9 +57,9 @@ public class AiportFindDelayApp {
              return cancelFlag;
          }
 
-         boolean getDelayFlag() {
-             return delayFlag;
-         }
+//         boolean getDelayFlag() {
+//             return delayFlag;
+//         }
 
          float getDelayTime() {
              return delayTime;
@@ -86,7 +86,7 @@ public class AiportFindDelayApp {
                 flightList.filter(string -> !isFirstStringFlightTable(string)).
                 mapToPair(string -> {
                     String[] flightValues = getArrayOfValues(string);
-                    FlightSerializable flightData = new FlightSerializable(flightValues)
+                    //FlightSerializable flightData = new FlightSerializable(flightValues)
                 });
 
 //        JavaRDD<String> test = airportsList.filter(string -> !isFirstString(string)).
