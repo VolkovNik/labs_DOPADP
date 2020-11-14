@@ -135,7 +135,9 @@ public class AiportFindDelayApp {
 
         JavaPairRDD<Boolean, String> test = flightInformation.values().mapToPair(
                 string -> {
-                    return new Tuple2<>(string.getCancelFlag(), float(string.getDelayTime()));
+                    float time = string.getDelayTime();
+                    boolean flag = string.getCancelFlag();
+                    return new Tuple2<>(flag, time);
                 }
         );
 
