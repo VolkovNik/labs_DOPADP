@@ -91,7 +91,7 @@ public class AiportFindDelayApp {
                     Integer airportId = Integer.parseInt(deleteQuotes(airportValues[ID_AIRPORT_COLUMN_FOR_NAME]));
                     String airportName = airportValues[NAME_AIRPORT_COLUMN];
 
-                    
+                    float cancelledCode = 
 
                     return new Tuple2<>(airportId, airportName);
                 });
