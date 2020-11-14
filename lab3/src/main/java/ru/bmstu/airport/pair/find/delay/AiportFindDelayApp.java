@@ -63,9 +63,27 @@ public class AiportFindDelayApp {
     }
 
     public static class Testing implements Serializable {
-        private float TimeDelay;
+        private float timeDelay;
         private int counterDelayed;
         private int counterCancelled;
+
+        Testing(float timeDelay, int counterDelayed, int counterCancelled) {
+            this.timeDelay = timeDelay;
+            this.counterDelayed = counterDelayed;
+            this.counterCancelled = counterCancelled;
+        }
+
+        float getTimeDelay() {
+            return timeDelay;
+        }
+
+        public int getCounterCancelled() {
+            return counterCancelled;
+        }
+
+        public int getCounterDelayed() {
+            return counterDelayed;
+        }
     }
 
     public static void main(String[] args) {
