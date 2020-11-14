@@ -96,7 +96,8 @@ public class AiportFindDelayApp {
 
     public static class flightDataCombined implements Serializable {
         private float sumDelays;
-        priv
+        private int counterFlight;
+        private int 
     }
 
     public static class TestingCombine implements Serializable {
