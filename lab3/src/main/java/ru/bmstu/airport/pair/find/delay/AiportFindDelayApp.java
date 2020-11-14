@@ -94,7 +94,10 @@ public class AiportFindDelayApp {
     }
 
 
-    public 
+    public static class flightDataCombined implements Serializable {
+        private float sumDelays;
+        priv
+    }
 
     public static class TestingCombine implements Serializable {
         private float sumDelays;
