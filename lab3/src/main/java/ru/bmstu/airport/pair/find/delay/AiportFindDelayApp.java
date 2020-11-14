@@ -38,7 +38,7 @@ public class AiportFindDelayApp {
         return str.replaceAll(REGEX_FOR_QUOTES, REPLACEMENT_TO_NULL_STR);
     }
 
-    private String[] getArrayOfValues(String strValue) {
+    private static String[] getArrayOfValues(String strValue) {
         return strValue.split(REGEX_SPLITTER_CVS);
     }
 
@@ -85,7 +85,8 @@ public class AiportFindDelayApp {
         JavaPairRDD<Tuple2<Integer, Integer>, FlightSerializable> flightInformation =
                 flightList.filter(string -> !isFirstStringFlightTable(string)).
                 mapToPair(string -> {
-                    String[] flightValues = string.
+                    String[] flightValues = getArrayOfValues(string);
+                    FlightSerializable flightData = new FlightSerializable(flightValues)
                 });
 
 //        JavaRDD<String> test = airportsList.filter(string -> !isFirstString(string)).
