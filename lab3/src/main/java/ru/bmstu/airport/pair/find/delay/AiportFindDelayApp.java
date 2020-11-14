@@ -115,7 +115,11 @@ public class AiportFindDelayApp {
             );
         }
 
-        public static TestingCombine add()
+        public static TestingCombine add(TestingCombine a, TestingCombine b) {
+            return new TestingCombine(
+                    
+            )
+        }
 
     }
 
