@@ -64,7 +64,6 @@ public class AiportFindDelayApp {
 
     public static class FlightSerializable implements Serializable {
          private boolean cancelFlag;
-         //private boolean delayFlag;
          private float delayTime;
 
          FlightSerializable(boolean cancelFlag, float delayTime) {
@@ -76,10 +75,6 @@ public class AiportFindDelayApp {
          boolean getCancelFlag() {
              return cancelFlag;
          }
-
-//         boolean getDelayFlag() {
-//             return delayFlag;
-//         }
 
          float getDelayTime() {
              return delayTime;
@@ -118,20 +113,7 @@ public class AiportFindDelayApp {
 
                     return new Tuple2<>(new Tuple2<>(destAirportId, originalAirportId), flightDelayData);
 
-                    //FlightSerializable flightData = new FlightSerializable(flightValues)
                 });
-
-//        JavaRDD<String> test = airportsList.filter(string -> !isFirstString(string)).
-//                map(string -> {
-//                    String[] airportValues = string.split(REGEX_SPLITTER_CVS);
-//
-//                    return deleteQuotes(airportValues[NAME_AIRPORT_COLUMN]);
-//                });
-
-        //JavaRDD<String> flightString = flightList.toString();
-        //System.out.println("kek");
-            //test.saveAsTextFile("output");
-        //flightString.saveAsTextFile("output");
 
         JavaPairRDD<Boolean, Float> test = flightInformation.values().mapToPair(
                 value -> {
@@ -142,9 +124,7 @@ public class AiportFindDelayApp {
         );
 
         test.saveAsTextFile("output");
-        //airportsInformation.saveAsTextFile("output");
 
 
     }
 }
-//ru.bmstu.airport.pair.find.delay
