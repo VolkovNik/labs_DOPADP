@@ -158,21 +158,24 @@ public class AiportFindDelayApp {
 
                 });
 
-        JavaPairRDD<Boolean, Float> test = flightInformation.values().mapToPair(
-                value -> {
-                    float time = value.getDelayTime();
-                    boolean flag = value.getCancelFlag();
-                    return new Tuple2<>(flag, time);
-                }
 
-        );
 
         JavaPairRDD<Tuple2<Integer, Integer>, TestingCombine> combine =
                 flightInformation.combineByKey(
-                        p -> new Testing(p.getDelayTime(), 1),
+                        p -> new TestingCombine(p.getDelayTime(), 1),
                         (combin, p) -> TestingCombine.addValue(combin, p.getDelayTime()),
                         TestingCombine::add
                 );
+
+
+        JavaPairRDD<Integer, Float> test = combine.values().mapToPair(
+                value -> {
+                    float time = value.getSumDelays();
+                    int counter = value.getCounter();
+                    return new Tuple2<>(counter, time);
+                }
+
+        );
 
         test.saveAsTextFile("output");
 
