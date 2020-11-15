@@ -190,8 +190,12 @@ public class AiportFindDelayApp {
                                 value.getDelayTime() > ZERO_TIME ? 1 : 0
                         ),
                         (flight, value) -> FlightDataCombined.addValue(
-                                
-                        )
+                                value.getDelayTime(),
+                                1,
+                                value.getCancelFlag() ? 1 : 0,
+                                value.getDelayTime() > ZERO_TIME ? 1 : 0
+                        ),
+                        
 
                 );
 
