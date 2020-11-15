@@ -199,7 +199,9 @@ public class AiportFindDelayApp {
 
         JavaPairRDD<Float, Integer> test =
                 flightDataCombined.mapToPair(
-                        
+                        value -> {
+                            
+                        }
                 )
 
 
