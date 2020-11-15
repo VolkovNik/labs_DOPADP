@@ -202,7 +202,14 @@ public class AiportFindDelayApp {
         JavaPairRDD<Tuple2<Integer, Integer>, String> flightDataString =
                 flightDataCombined.map(
                         value -> {
-                            StringBuilder dataInString = "Max";
+
+                            float percentageOfDelayed = value._2().counterFlight / value._2().getCounterDelayed() + 100;
+
+                            String dataInString =
+                                    "MaxDelay: " + value._2().getMaxDelay() +
+                                    " Flights: " + value._2().getCounterFlight() +
+                                    " Cancelled Flights: " + value._2().getCounterCancelled() +
+                                    " Delayed Flights: " + value._2().getCounterDelayed() ;
                         }
                 )
 
