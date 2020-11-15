@@ -200,10 +200,11 @@ public class AiportFindDelayApp {
         JavaPairRDD<Float, Integer> test =
                 flightDataCombined.mapToPair(
                         value -> {
-                            
+                            return new Tuple2<>(value._2().getMaxDelay(), value._2().counterFlight);
                         }
-                )
+                );
 
+        test.saveAsTextFile("output");
 
     }
 }
