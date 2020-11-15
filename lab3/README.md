@@ -11,5 +11,6 @@
 
 ### Команды для запуска
 
-1.
-2.
+1. hdfs namenode -format
+2. start-all.sh
+3. 
