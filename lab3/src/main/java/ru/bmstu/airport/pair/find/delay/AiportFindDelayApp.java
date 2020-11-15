@@ -202,7 +202,7 @@ public class AiportFindDelayApp {
         JavaPairRDD<Tuple2<Integer, Integer>, String> flightDataString =
                 flightDataCombined.map(
                         value -> {
-                            return "";
+                            StringBuilder dataInString = "Max";
                         }
                 )
 
