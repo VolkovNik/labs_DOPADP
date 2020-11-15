@@ -199,13 +199,23 @@ public class AiportFindDelayApp {
                         FlightDataCombined::add
                 );
 
+        JavaPairRDD<Tuple2<Integer, Integer>, String> flightDataString =
+                flightDataCombined.map(
+                        value -> {
+                            return "";
+                        }
+                )
+
         final Broadcast<Map<Integer, String>> airportBroadcasted = sc.broadcast(airportsInformation.collectAsMap());
 
         JavaRDD<String> ans = flightDataCombined.map(
                 value -> {
                     Map<Integer, String> airportName = airportBroadcasted.getValue();
 
-                    String airportFrom = airportName(value._1()._1());
+                    String airportFrom = airportName.get(value._1()._1());
+                    String airportTo = airportName.get(value._1()._2());
+
+                    return "From: " + airportFrom + " To: " + airportTo + "\n" + value._2();
 
                 }
         )
