@@ -181,7 +181,7 @@ public class AiportFindDelayApp {
 
                 });
 
-        JavaPairRDD<Tuple2<>>
+        JavaPairRDD<Tuple2<Integer, Integer>, FlightDataCombined>
 
 
 
