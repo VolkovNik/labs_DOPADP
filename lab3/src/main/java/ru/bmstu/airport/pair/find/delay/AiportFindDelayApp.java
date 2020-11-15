@@ -198,7 +198,7 @@ public class AiportFindDelayApp {
                         FlightDataCombined::add
                 );
 
-        final Broadcast<>
+        final Broadcast<Map<>>
 
         JavaPairRDD<Float, Integer> test =
                 flightDataCombined.mapToPair(
