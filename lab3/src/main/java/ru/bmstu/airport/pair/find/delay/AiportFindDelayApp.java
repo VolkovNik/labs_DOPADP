@@ -174,7 +174,7 @@ public class AiportFindDelayApp {
                             if (value._2().getCounterCancelled() != ZERO) {
                                 percentageOfCancelled = (float) value._2().counterFlight / value._2().getCounterCancelled() * ONE_HUNDRED_PERCENT;
                             }
-                            
+
                             String dataInString =
                                     "MaxDelay: " + value._2().getMaxDelay() +
                                     " Flights: " + value._2().getCounterFlight() +
