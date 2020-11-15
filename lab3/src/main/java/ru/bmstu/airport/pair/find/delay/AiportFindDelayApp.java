@@ -62,37 +62,6 @@ public class AiportFindDelayApp {
             return ZERO_TIME;
     }
 
-    public static class Testing implements Serializable {
-        private float timeDelay;
-        private int counterDelayed;
-        private int counterCancelled;
-        private int counterFlights;
-
-        Testing(float timeDelay, int counterDelayed, int counterCancelled, int counterFlights) {
-            this.timeDelay = timeDelay;
-            this.counterDelayed = counterDelayed;
-            this.counterCancelled = counterCancelled;
-            this.counterFlights = counterFlights;
-        }
-
-        float getTimeDelay() {
-            return timeDelay;
-        }
-
-        public int getCounterCancelled() {
-            return counterCancelled;
-        }
-
-        public int getCounterDelayed() {
-            return counterDelayed;
-        }
-
-        public int getCounterFlights() {
-            return counterFlights;
-        }
-    }
-
-
     public static class FlightDataCombined implements Serializable {
         private float maxDelay;
         private int counterFlight;
@@ -124,7 +93,7 @@ public class AiportFindDelayApp {
 
         public static FlightDataCombined addValue (FlightDataCombined data, float maxDelay,
                                                    int counterCancelled, int counterDelayed) {
-            return new FlightDataCombined(Math.max(data.getMaxDelay(),maxDelay),
+            return new FlightDataCombined(Math.max(data.getMaxDelay(), maxDelay),
                     data.getCounterFlight() + 1,
                     data.getCounterCancelled() + counterCancelled,
                     data.getCounterDelayed() + counterDelayed);
@@ -212,39 +181,10 @@ public class AiportFindDelayApp {
 
                 });
 
-
-
-//        JavaPairRDD<Tuple2<Integer, Integer>, TestingCombine> combine =
-//                flightInformation.combineByKey(
-//                        p -> new TestingCombine(p.getDelayTime(), 1),
-//                        (combin, p) -> TestingCombine.addValue(combin, p.getDelayTime()),
-//                        TestingCombine::add
-//                );
-
-        JavaPairRDD<Tuple2<Integer, Integer>, FlightDataCombined> flightInformationCombined =
+        JavaPairRDD<Tuple2<Integer, Integer>, FlightDataCombined> flightDataCombine =
                 flightInformation.combineByKey(
-                        value -> new FlightDataCombined(value.getDelayTime(), 1, 1,1),
-                        (flight, value) ->
-                );
-
-
-        JavaPairRDD<Integer, Float> test = combine.values().mapToPair(
-                value -> {
-                    float time = value.getSumDelays();
-                    int counter = value.getCounter();
-                    return new Tuple2<>(counter, time);
-                }
-
-        );
-
-        JavaRDD<Float> kek = combine.map(
-                value -> {
-                    return value._2().getSumDelays() / (float) value._2().getCounter();
-                }
-        );
-
-        kek.saveAsTextFile("output");
-        //test.saveAsTextFile("output");
+                        value ->
+                )
 
 
     }
