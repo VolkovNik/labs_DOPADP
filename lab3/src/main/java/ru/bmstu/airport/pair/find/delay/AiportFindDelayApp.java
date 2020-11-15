@@ -203,7 +203,7 @@ public class AiportFindDelayApp {
                 flightDataCombined.map(
                         value -> {
 
-                            float percentageOfDelayed = value._2().counterFlight / value._2().getCounterDelayed() + 100;
+                            float percentageOfDelayed = (float) value._2().counterFlight / value._2().getCounterDelayed() + 100;
 
                             String dataInString =
                                     "MaxDelay: " + value._2().getMaxDelay() +
