@@ -14,4 +14,5 @@
 1. hdfs namenode -format
 2. start-all.sh
 3. mvn package
-4. 
+4. hadoop fs -copyFromLocal AirportList.csv FlightList.csv /
+5. 
