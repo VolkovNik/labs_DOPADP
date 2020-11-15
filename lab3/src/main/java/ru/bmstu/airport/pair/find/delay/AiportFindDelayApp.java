@@ -203,6 +203,7 @@ public class AiportFindDelayApp {
 
         JavaRDD<String> ans = flightDataCombined.map(
                 value -> {
+                    Map<Integer, String> airportName = airportBroadcasted.getValue();
                     
                 }
         )
