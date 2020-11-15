@@ -11,11 +11,11 @@ public class FlightSerializable implements Serializable {
         this.delayTime = delayTime;
     }
 
-    boolean getCancelFlag() {
+    public boolean getCancelFlag() {
         return cancelFlag;
     }
 
-    float getDelayTime() {
+    public float getDelayTime() {
         return delayTime;
     }
 }
