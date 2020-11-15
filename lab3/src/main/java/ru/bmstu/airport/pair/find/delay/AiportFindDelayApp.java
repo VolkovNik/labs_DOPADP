@@ -72,52 +72,7 @@ public class AiportFindDelayApp {
             return ZERO_TIME;
     }
 
-    public static class FlightDataCombined implements Serializable {
-        private float maxDelay;
-        private int counterFlight;
-        private int counterCancelled;
-        private int counterDelayed;
 
-        public FlightDataCombined(float maxDelay, int counterFlight, int counterCancelled, int counterDelayed) {
-            this.maxDelay = maxDelay;
-            this.counterFlight = counterFlight;
-            this.counterCancelled = counterCancelled;
-            this.counterDelayed = counterDelayed;
-        }
-
-        public float getMaxDelay() {
-            return maxDelay;
-        }
-
-        public int getCounterDelayed() {
-            return counterDelayed;
-        }
-
-        public int getCounterCancelled() {
-            return counterCancelled;
-        }
-
-        public int getCounterFlight() {
-            return counterFlight;
-        }
-
-        public static FlightDataCombined addValue (FlightDataCombined data, float maxDelay,
-                                                   int counterCancelled, int counterDelayed) {
-            return new FlightDataCombined(Math.max(data.getMaxDelay(), maxDelay),
-                    data.getCounterFlight() + 1,
-                    data.getCounterCancelled() + counterCancelled,
-                    data.getCounterDelayed() + counterDelayed);
-        }
-
-        public static FlightDataCombined add (FlightDataCombined first, FlightDataCombined second) {
-            return new FlightDataCombined(
-                    Math.max(first.getMaxDelay(), second.getMaxDelay()),
-                            first.getCounterFlight() + second.getCounterFlight(),
-                            first.getCounterCancelled() + second.getCounterCancelled(),
-                            first.getCounterDelayed() + second.getCounterDelayed());
-        }
-
-    }
 
     public static void main(String[] args) {
         SparkConf conf = new SparkConf().setAppName("lab3");
@@ -177,11 +132,11 @@ public class AiportFindDelayApp {
                             float percentageOfCancelled = 0;
 
                             if (value._2().getCounterDelayed() != ZERO) {
-                                percentageOfDelayed = (float) value._2().getCounterDelayed() / value._2().counterFlight * ONE_HUNDRED_PERCENT;
+                                percentageOfDelayed = (float) value._2().getCounterDelayed() / value._2().getCounterFlight() * ONE_HUNDRED_PERCENT;
                             }
 
                             if (value._2().getCounterCancelled() != ZERO) {
-                                percentageOfCancelled = (float) value._2().getCounterCancelled() / value._2().counterFlight * ONE_HUNDRED_PERCENT;
+                                percentageOfCancelled = (float) value._2().getCounterCancelled() / value._2().getCounterFlight() * ONE_HUNDRED_PERCENT;
                             }
 
                             String dataInString =
