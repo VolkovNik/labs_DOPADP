@@ -168,11 +168,11 @@ public class AiportFindDelayApp {
                             float percentageOfCancelled = 0;
 
                             if (value._2().getCounterDelayed() != ZERO) {
-                                percentageOfDelayed = (float) value._2().counterFlight / value._2().getCounterDelayed() * ONE_HUNDRED_PERCENT;
+                                percentageOfDelayed = (float) value._2().getCounterDelayed() / value._2().counterFlight * ONE_HUNDRED_PERCENT;
                             }
 
                             if (value._2().getCounterCancelled() != ZERO) {
-                                percentageOfCancelled = (float) value._2().counterFlight / value._2().getCounterCancelled() * ONE_HUNDRED_PERCENT;
+                                percentageOfCancelled = (float) value._2().getCounterCancelled() / value._2().counterFlight * ONE_HUNDRED_PERCENT;
                             }
 
                             String dataInString =
