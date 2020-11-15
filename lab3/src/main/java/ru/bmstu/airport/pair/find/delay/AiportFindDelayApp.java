@@ -199,7 +199,9 @@ public class AiportFindDelayApp {
                         FlightDataCombined::add
                 );
 
-        final Broadcast<Map<String, Integer>> airportBroadcasted = sc.broadcast()
+        final Broadcast<Map<Integer, String>> airportBroadcasted = sc.broadcast(airportsInformation.collectAsMap());
+
+        
 
         JavaPairRDD<Float, Integer> test =
                 flightDataCombined.mapToPair(
