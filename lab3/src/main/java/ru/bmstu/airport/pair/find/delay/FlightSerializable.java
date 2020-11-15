@@ -6,7 +6,7 @@ public class FlightSerializable implements Serializable {
     private boolean cancelFlag;
     private float delayTime;
 
-    FlightSerializable(boolean cancelFlag, float delayTime) {
+    public FlightSerializable(boolean cancelFlag, float delayTime) {
         this.cancelFlag = cancelFlag;
         this.delayTime = delayTime;
     }

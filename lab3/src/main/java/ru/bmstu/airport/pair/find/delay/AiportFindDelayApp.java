@@ -68,7 +68,7 @@ public class AiportFindDelayApp {
         private int counterCancelled;
         private int counterDelayed;
 
-        FlightDataCombined(float maxDelay, int counterFlight, int counterCancelled, int counterDelayed) {
+        public FlightDataCombined(float maxDelay, int counterFlight, int counterCancelled, int counterDelayed) {
             this.maxDelay = maxDelay;
             this.counterFlight = counterFlight;
             this.counterCancelled = counterCancelled;
@@ -183,7 +183,9 @@ public class AiportFindDelayApp {
 
         JavaPairRDD<Tuple2<Integer, Integer>, FlightDataCombined> flightDataCombined =
                 flightInformation.combineByKey(
-                        value -> new FlightDataCombined(value.getDelayTime())
+                        value -> {
+                            
+                        }
                 )
 
 
