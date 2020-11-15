@@ -13,7 +13,6 @@ import java.util.Map;
 public class AiportFindDelayApp {
     private static final String REGEX_SPLITTER_CVS = ",";
     private static final String FLAG_FIRST_STRING_FLIGHT_TABLE = "YEAR";
-    private static final int ZERO_COLUMN = 0;
     private static final int ID_AIRPORT_COLUMN_FOR_DELAY = 14;
     private static final int ID_AIRPORT_ORIGIN_COLUMN = 11;
     private static final int CANCELLED_CODE_COLUMN = 19;
@@ -21,13 +20,12 @@ public class AiportFindDelayApp {
     private static final String EMPTY_STRING = "";
     private static final float CANCEL_CODE = 1;
     private static final float ZERO_TIME = 0;
-    private static final int INDICATOR_FLIGHT_MAPPER = 1;
     private static final String REGEX_FOR_QUOTES = "^\"+|\"+$";
     private static final String REPLACEMENT_TO_NULL_STR = "";
     private static final int ID_AIRPORT_COLUMN_FOR_NAME = 0;
     private static final int NAME_AIRPORT_COLUMN = 1;
-    private static final int INDICATOR_AIRPORT_MAPPER = 0;
     private static final String FLAG_FIRST_STRING_AIRPORT_TABLE = "Code";
+    private static final int ONE_HUNDRED_PERCENT = 100;
 
     private static boolean isFirstStringAirportTable(String str) {
         return str.contains(FLAG_FIRST_STRING_AIRPORT_TABLE);
@@ -109,44 +107,6 @@ public class AiportFindDelayApp {
                             first.getCounterDelayed() + second.getCounterDelayed());
         }
 
-
-
-    }
-
-    public static class TestingCombine implements Serializable {
-        private float sumDelays;
-        private int counter;
-
-        TestingCombine(float sumDelays, int counter) {
-            this.sumDelays = sumDelays;
-            this.counter = counter;
-        }
-
-        public float getSumDelays() {
-            return sumDelays;
-        }
-
-        public int getCounter() {
-            return counter;
-        }
-
-        public static TestingCombine addValue(TestingCombine a, float delay) {
-            return new TestingCombine(
-                    a.getSumDelays() + delay, a.getCounter() + 1
-            );
-        }
-
-        public static TestingCombine add(TestingCombine a, TestingCombine b) {
-            return new TestingCombine(
-                    a.getSumDelays() + b.getSumDelays(),
-                    a.getCounter() + a.getCounter()
-            );
-        }
-
-        public float avg() {
-            return sumDelays / (float)counter;
-        }
-
     }
 
     public static void main(String[] args) {
@@ -200,22 +160,26 @@ public class AiportFindDelayApp {
                 );
 
         JavaPairRDD<Tuple2<Integer, Integer>, String> flightDataString =
-                flightDataCombined.map(
+                flightDataCombined.mapToPair(
                         value -> {
 
-                            float percentageOfDelayed = (float) value._2().counterFlight / value._2().getCounterDelayed() + 100;
+                            float percentageOfDelayed = (float) value._2().counterFlight / value._2().getCounterDelayed() * ONE_HUNDRED_PERCENT;
+                            float percentageOfCancelled = (float) value._2().counterFlight / value._2().getCounterCancelled() * ONE_HUNDRED_PERCENT;
 
                             String dataInString =
                                     "MaxDelay: " + value._2().getMaxDelay() +
                                     " Flights: " + value._2().getCounterFlight() +
                                     " Cancelled Flights: " + value._2().getCounterCancelled() +
-                                    " Delayed Flights: " + value._2().getCounterDelayed() ;
+                                    " Delayed Flights: " + value._2().getCounterDelayed() +
+                                    " Percentage of delayed: " + percentageOfDelayed +
+                                    " Percentage of cancelled: " + percentageOfCancelled;
+                            return new Tuple2<>(value._1(), dataInString);
                         }
-                )
+                );
 
         final Broadcast<Map<Integer, String>> airportBroadcasted = sc.broadcast(airportsInformation.collectAsMap());
 
-        JavaRDD<String> ans = flightDataCombined.map(
+        JavaRDD<String> dataToOutput = flightDataString.map(
                 value -> {
                     Map<Integer, String> airportName = airportBroadcasted.getValue();
 
@@ -225,16 +189,9 @@ public class AiportFindDelayApp {
                     return "From: " + airportFrom + " To: " + airportTo + "\n" + value._2();
 
                 }
-        )
+        );
 
-        JavaPairRDD<Float, Integer> test =
-                flightDataCombined.mapToPair(
-                        value -> {
-                            return new Tuple2<>(value._2().getMaxDelay(), value._2().counterFlight);
-                        }
-                );
-
-        test.saveAsTextFile("output");
+        dataToOutput.saveAsTextFile("output");
 
     }
 }
