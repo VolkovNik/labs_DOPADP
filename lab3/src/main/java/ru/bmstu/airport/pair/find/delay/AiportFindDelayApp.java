@@ -188,7 +188,8 @@ public class AiportFindDelayApp {
                                 1,
                                 value.getCancelFlag() ? 1 : 0,
                                 value.getDelayTime() > ZERO_TIME ? 1 : 0
-                        )
+                        ),
+                        
                 )
 
 
