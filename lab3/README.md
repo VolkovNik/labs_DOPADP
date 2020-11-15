@@ -13,4 +13,5 @@
 
 1. hdfs namenode -format
 2. start-all.sh
-3. 
+3. mvn package
+4. 
