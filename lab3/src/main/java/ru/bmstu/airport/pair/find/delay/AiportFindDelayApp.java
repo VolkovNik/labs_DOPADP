@@ -184,7 +184,7 @@ public class AiportFindDelayApp {
         JavaPairRDD<Tuple2<Integer, Integer>, FlightDataCombined> flightDataCombined =
                 flightInformation.combineByKey(
                         value -> {
-                            float delay = value;
+                            float delay = ;
                         }
                 )
 
