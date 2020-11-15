@@ -181,11 +181,8 @@ public class AiportFindDelayApp {
 
                 });
 
+        JavaPairRDD<Tuple2<>>
 
-        JavaPairRDD<Tuple2<Integer, Integer>, FlightDataCombined> flightDataCombine =
-                flightInformation.combineByKey(
-                        value -> new FlightDataCombined(value.getDelayTime(), 1, value.getCancelFlag())
-                )
 
 
     }
