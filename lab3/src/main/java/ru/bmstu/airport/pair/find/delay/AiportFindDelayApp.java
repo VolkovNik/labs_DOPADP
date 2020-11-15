@@ -8,6 +8,7 @@ import org.apache.spark.broadcast.Broadcast;
 import scala.Tuple2;
 
 import java.io.Serializable;
+import java.util.Map;
 
 public class AiportFindDelayApp {
     private static final String REGEX_SPLITTER_CVS = ",";
@@ -198,7 +199,7 @@ public class AiportFindDelayApp {
                         FlightDataCombined::add
                 );
 
-        final Broadcast<Map<>>
+        final Broadcast<Map<String, Integer>>
 
         JavaPairRDD<Float, Integer> test =
                 flightDataCombined.mapToPair(
