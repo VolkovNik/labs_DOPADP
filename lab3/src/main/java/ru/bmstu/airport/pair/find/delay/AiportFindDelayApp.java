@@ -27,6 +27,15 @@ public class AiportFindDelayApp {
     private static final int NAME_AIRPORT_COLUMN = 1;
     private static final String FLAG_FIRST_STRING_AIRPORT_TABLE = "Code";
     private static final int ONE_HUNDRED_PERCENT = 100;
+    private static final String MAX_DELAY_STRING = "MaxDelay: ";
+    private static final String FLIGHTS_STRING = " Flights: ";
+    private static final String CANCELLED_FLIGHTS_STRING = " Cancelled Flights: ";
+    private static final String DELAYED_FLIGHT_STRING = " Delayed Flights: ";
+    private static final String PERCENTAGE_OF_DELAYED_STRING = " Percentage of delayed: ";
+    private static final String PERCENTAGE_OF_CANCELLED_STRING = " Percentage of cancelled: ";
+    private static final String FROM_STRING = "From: ";
+    private static final String TO_STRING = " To: ";
+    private static final String END_OF_STRING = "\n";
 
     private static boolean isFirstStringAirportTable(String str) {
         return str.contains(FLAG_FIRST_STRING_AIRPORT_TABLE);
@@ -176,12 +185,12 @@ public class AiportFindDelayApp {
                             }
 
                             String dataInString =
-                                    "MaxDelay: " + value._2().getMaxDelay() +
-                                    " Flights: " + value._2().getCounterFlight() +
-                                    " Cancelled Flights: " + value._2().getCounterCancelled() +
-                                    " Delayed Flights: " + value._2().getCounterDelayed() +
-                                    " Percentage of delayed: " + percentageOfDelayed +
-                                    " Percentage of cancelled: " + percentageOfCancelled;
+                                    MAX_DELAY_STRING + value._2().getMaxDelay() +
+                                    FLIGHTS_STRING + value._2().getCounterFlight() +
+                                    CANCELLED_FLIGHTS_STRING + value._2().getCounterCancelled() +
+                                    DELAYED_FLIGHT_STRING + value._2().getCounterDelayed() +
+                                    PERCENTAGE_OF_DELAYED_STRING + percentageOfDelayed +
+                                    PERCENTAGE_OF_CANCELLED_STRING + percentageOfCancelled;
                             return new Tuple2<>(value._1(), dataInString);
                         }
                 );
@@ -195,7 +204,7 @@ public class AiportFindDelayApp {
                     String airportFrom = airportName.get(value._1()._1());
                     String airportTo = airportName.get(value._1()._2());
 
-                    return "From: " + airportFrom + " To: " + airportTo + "\n" + value._2();
+                    return FROM_STRING + airportFrom + TO_STRING + airportTo + END_OF_STRING + value._2();
 
                 }
         );
