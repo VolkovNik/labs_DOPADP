@@ -20,6 +20,7 @@ public class AiportFindDelayApp {
     private static final String EMPTY_STRING = "";
     private static final float CANCEL_CODE = 1;
     private static final float ZERO_TIME = 0;
+    private static final float ZERO = 0;
     private static final String REGEX_FOR_QUOTES = "^\"+|\"+$";
     private static final String REPLACEMENT_TO_NULL_STR = "";
     private static final int ID_AIRPORT_COLUMN_FOR_NAME = 0;
@@ -163,9 +164,17 @@ public class AiportFindDelayApp {
                 flightDataCombined.mapToPair(
                         value -> {
 
-                            float percentageOfDelayed = (float) value._2().counterFlight / value._2().getCounterDelayed() * ONE_HUNDRED_PERCENT;
-                            float percentageOfCancelled = (float) value._2().counterFlight / value._2().getCounterCancelled() * ONE_HUNDRED_PERCENT;
+                            float percentageOfDelayed = 0;
+                            float percentageOfCancelled = 0;
 
+                            if (value._2().getCounterDelayed() != ZERO) {
+                                percentageOfDelayed = (float) value._2().counterFlight / value._2().getCounterDelayed() * ONE_HUNDRED_PERCENT;
+                            }
+
+                            if (value._2().getCounterCancelled() != ZERO) {
+                                percentageOfCancelled = (float) value._2().counterFlight / value._2().getCounterCancelled() * ONE_HUNDRED_PERCENT;
+                            }
+                            
                             String dataInString =
                                     "MaxDelay: " + value._2().getMaxDelay() +
                                     " Flights: " + value._2().getCounterFlight() +
