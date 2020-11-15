@@ -180,10 +180,11 @@ public class AiportFindDelayApp {
                     return new Tuple2<>(new Tuple2<>(destAirportId, originalAirportId), flightDelayData);
 
                 });
+        
 
         JavaPairRDD<Tuple2<Integer, Integer>, FlightDataCombined> flightDataCombine =
                 flightInformation.combineByKey(
-                        value -> new FlightDataCombined()
+                        value -> new FlightDataCombined(value.getDelayTime())
                 )
 
 
