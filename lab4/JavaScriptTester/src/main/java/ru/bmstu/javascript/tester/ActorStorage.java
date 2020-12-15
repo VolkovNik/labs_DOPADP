@@ -1,6 +1,7 @@
 package ru.bmstu.javascript.tester;
 
 import akka.actor.AbstractActor;
+import akka.actor.ActorRef;
 import akka.japi.pf.ReceiveBuilder;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class ActorStorage extends AbstractActor {
                     String id = msg.getPackageId();
                     ArrayList<String> result = testResults.get(id);
 
-                    getSender().tell(new ReturnResultMsg(id, result), getSender());
+                    getSender().tell(new ReturnResultMsg(id, result), ActorRef.noSender());
                 }).build();
     }
 }
