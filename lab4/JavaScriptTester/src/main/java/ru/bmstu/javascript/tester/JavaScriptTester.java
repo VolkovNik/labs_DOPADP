@@ -1,16 +1,24 @@
 package ru.bmstu.javascript.tester;
 
+import akka.NotUsed;
 import akka.actor.ActorSystem;
+import akka.http.javadsl.ConnectHttp;
 import akka.http.javadsl.Http;
+import akka.http.javadsl.ServerBinding;
+import akka.http.javadsl.model.HttpRequest;
+import akka.http.javadsl.model.HttpResponse;
 import akka.stream.ActorMaterializer;
+import akka.stream.javadsl.Flow;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
+import java.io.IOException;
+import java.util.concurrent.CompletionStage;
 
 public class JavaScriptTester {
-    public static void main(String[] args) throws ScriptException, NoSuchMethodException {
+    public static void main(String[] args) throws ScriptException, NoSuchMethodException, IOException {
 
 //        ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
 //        engine.eval("var divideFn = function(a,b) { return a/b}");
