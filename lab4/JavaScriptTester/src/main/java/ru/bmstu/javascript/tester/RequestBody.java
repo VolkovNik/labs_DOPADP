@@ -1,2 +1,4 @@
-package ru.bmstu.javascript.tester;public class RequestBody {
+package ru.bmstu.javascript.tester;
+
+public class RequestBody {
 }
