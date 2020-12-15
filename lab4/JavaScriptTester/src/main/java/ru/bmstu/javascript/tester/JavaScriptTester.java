@@ -18,15 +18,12 @@ import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 import scala.concurrent.Future;
 
-import javax.script.Invocable;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
 
 public class JavaScriptTester extends AllDirectives {
-    public static void main(String[] args) throws ScriptException, NoSuchMethodException, IOException {
+    public static void main(String[] args) throws IOException {
 
         ActorSystem system = ActorSystem.create("routes");
         final Http http = Http.get(system);
