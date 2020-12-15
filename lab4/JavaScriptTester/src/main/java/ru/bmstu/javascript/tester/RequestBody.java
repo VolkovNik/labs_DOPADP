@@ -14,6 +14,6 @@ public class RequestBody {
     private String tests;
 
     @JsonCreator
-    
+    public RequestBody()
 
 }
