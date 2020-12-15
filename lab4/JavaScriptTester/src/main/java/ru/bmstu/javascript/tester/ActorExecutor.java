@@ -9,11 +9,11 @@ import javax.script.ScriptException;
 
 public class ActorExecutor extends AbstractActor {
 
-    public String executeTest(RequestBody requestBody) throws ScriptException, NoSuchMethodException {
+    public String executeTest(TestDataMsg testDataMsg) throws ScriptException, NoSuchMethodException {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
-        engine.eval(requestBody.getJsScript());
+        engine.eval(testDataMsg.getJsScript());
         Invocable invocable = (Invocable) engine;
-        Object[] params = requestBody.getTests().toArray();
+        Object[] params = testDataMsg.getParams().toArray();
         return (invocable.invokeFunction(requestBody.getFunctionName(), params).toString());
     }
 
