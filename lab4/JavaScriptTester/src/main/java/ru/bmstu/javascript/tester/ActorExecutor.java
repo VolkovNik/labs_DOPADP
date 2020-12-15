@@ -10,13 +10,13 @@ import javax.script.ScriptException;
 public class ActorExecutor extends AbstractActor {
 
     public String correctAnswer(TestDataMsg testDataMsg) {
-        String answer = testDataMsg.getTestName() + " from package" + testDataMsg.getPackageId() + " succeed  "
-        return "";
+        return testDataMsg.getTestName() + " from package " + testDataMsg.getPackageId()
+                + " succeed with result " + testDataMsg.getExpectedResult();
     }
 
-    public String wrongAnswer(TestDataMsg testDataMsg) {
-
-        return "";
+    public String wrongAnswer(TestDataMsg testDataMsg, String actorAnswer) {
+        return testDataMsg.getTestName() + " from package " + testDataMsg.getPackageId()
+                + " not succeed, expected: " + testDataMsg.getExpectedResult() + " but got: " + actorAnswer;
     }
 
     public String executeTest(TestDataMsg testDataMsg) throws ScriptException, NoSuchMethodException {
@@ -26,7 +26,9 @@ public class ActorExecutor extends AbstractActor {
         Object[] params = testDataMsg.getParams().toArray();
         String actorTestAnswer = (invocable.invokeFunction(testDataMsg.getFunctionName(), params).toString());
         if (actorTestAnswer.equals(testDataMsg.getExpectedResult())) {
-            return testDataMsg.getTestName() + ""
+            return correctAnswer(testDataMsg);
+        } else {
+            return wrongAnswer(testDataMsg, actorTestAnswer);
         }
     }
 
