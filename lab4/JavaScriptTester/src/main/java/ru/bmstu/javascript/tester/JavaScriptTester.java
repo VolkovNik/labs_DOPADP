@@ -53,7 +53,7 @@ public class JavaScriptTester extends AllDirectives {
                 get(
                         () -> parameter("packageId",
                                 (id) -> {
-                                    Future<Ob;
+                                    Future<Object> future = Patterns.ask(router, new GetResultMsg(id), 5);
                                     return
                                 })
                 ),
