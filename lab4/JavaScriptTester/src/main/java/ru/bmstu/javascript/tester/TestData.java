@@ -7,13 +7,15 @@ import java.util.ArrayList;
 public class TestData {
     @JsonProperty("testName")
     private final String testName;
+    @JsonProperty("expectedResult")
     private final String expectedResult;
+    @JsonProperty("params")
     private final ArrayList<String> params;
 
     public TestData (
-                     String testName,
-                     String expectedResult,
-                     ArrayList<String> params) {
+            @JsonProperty("testName") String testName,
+            @JsonProperty("expectedResult") String expectedResult,
+            @JsonProperty("params") ArrayList<String> params) {
         this.testName = testName;
         this.expectedResult = expectedResult;
         this.params = params;
