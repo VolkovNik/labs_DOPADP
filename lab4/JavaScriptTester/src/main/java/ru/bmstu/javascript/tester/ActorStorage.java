@@ -21,6 +21,13 @@ public class ActorStorage extends AbstractActor {
                     String id = msg.getPackageId();
                     ArrayList<String> result = testResults.get(id);
                     getSender().tell(new ReturnResultMsg(id, result), ActorRef.noSender());
-                }).build();
+                })
+                .match(StoreResultMsg.class, msg -> {
+                    if (!testResults.containsKey(msg.getPackageId())) {
+                        testResults.put(msg.getPackageId(), new ArrayList<>());
+                    }
+                    testResults.get(msg.getPackageId()).add(msg.getTestResult());
+                })
+                .build();
     }
 }
