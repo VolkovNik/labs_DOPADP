@@ -55,7 +55,7 @@ public class JavaScriptTester extends AllDirectives {
                                 (id) -> complete(""+ id + "\n"))
                 ),
                 post(
-                        () -> entity(Jackson.unmarshaller(RequestBody.class))
+                        () -> entity(Jackson.unmarshaller(RequestBody.class), )
                 )
         );
     }
