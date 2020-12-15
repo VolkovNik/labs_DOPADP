@@ -22,9 +22,10 @@ import java.util.concurrent.CompletionStage;
 
 public class JavaScriptTester extends AllDirectives {
     public static void main(String[] args) throws ScriptException, NoSuchMethodException, IOException {
-        
+
         ActorSystem system = ActorSystem.create("routes");
         final Http http = Http.get(system);
+        ActorRouter router = 
         final ActorMaterializer materializer = ActorMaterializer.create(system);
         JavaScriptTester instance = new JavaScriptTester();
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow =
