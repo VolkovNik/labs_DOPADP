@@ -6,12 +6,12 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
 public class JavaScriptTester {
-    public static void main(String[] args) throws ScriptException {
+    public static void main(String[] args) throws ScriptException, NoSuchMethodException {
 
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
         engine.eval("var divideFn = function(a,b) { return a/b}");
         Invocable invocable = (Invocable) engine;
-        return invocable.invokeFunction("divideFn", "").toString();
+        invocable.invokeFunction("divideFn", "[2,1]").toString();
 
     }
 }
