@@ -24,7 +24,6 @@ public class ActorExecutor extends AbstractActor {
     public String executeTest(TestDataMsg testDataMsg) throws ScriptException, NoSuchMethodException {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
         engine.eval(testDataMsg.getJsScript());
-        System.out.println(testDataMsg.getJsScript());
         Invocable invocable = (Invocable) engine;
         Object[] params = testDataMsg.getParams().toArray();
         String actorTestAnswer = (invocable.invokeFunction(testDataMsg.getFunctionName(), params).toString());
