@@ -48,14 +48,14 @@ public class JavaScriptTester extends AllDirectives {
     }
 
     private Route createRoute() {
-        return (
+        return route(
                 get(
                         () -> complete("Recevied GET")
                 ),
                 post(
                         () -> complete("Recevied POST")
-                );
-        )
+                )
+        );
     }
 
 }
