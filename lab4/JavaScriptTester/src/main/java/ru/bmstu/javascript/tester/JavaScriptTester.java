@@ -48,7 +48,7 @@ public class JavaScriptTester extends AllDirectives {
     }
 
     private Route createRoute() {
-        return route(
+        return (
                 get(
                         () -> complete("Recevied GET")
                 ).orElse(
