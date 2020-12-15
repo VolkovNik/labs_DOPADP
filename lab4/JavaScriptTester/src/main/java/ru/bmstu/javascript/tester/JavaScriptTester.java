@@ -22,13 +22,7 @@ import java.util.concurrent.CompletionStage;
 
 public class JavaScriptTester extends AllDirectives {
     public static void main(String[] args) throws ScriptException, NoSuchMethodException, IOException {
-
-//        ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
-//        engine.eval("var divideFn = function(a,b) { return a/b}");
-//        Invocable invocable = (Invocable) engine;
-//        Object[] params = {2, 1};
-//        System.out.println(invocable.invokeFunction("divideFn", params).toString());
-
+        
         ActorSystem system = ActorSystem.create("routes");
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
