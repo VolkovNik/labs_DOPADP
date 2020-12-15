@@ -1,6 +1,7 @@
 package ru.bmstu.javascript.tester;
 
 import akka.actor.AbstractActor;
+import akka.japi.pf.ReceiveBuilder;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
@@ -34,6 +35,10 @@ public class ActorExecutor extends AbstractActor {
 
     @Override
     public Receive createReceive() {
-        return null;
+        return ReceiveBuilder.create()
+                .match(TestDataMsg.class,
+                        testDataMsg -> getSender().tell(new)
+                        )
+                .build();
     }
 }
