@@ -13,12 +13,12 @@ public class ActorExecutor extends AbstractActor {
 
     public String correctAnswer(TestDataMsg testDataMsg) {
         return testDataMsg.getTestName() + " from package " + testDataMsg.getPackageId()
-                + " succeed with result " + testDataMsg.getExpectedResult();
+                + " succeed with result " + testDataMsg.getExpectedResult() + "\n";
     }
 
     public String wrongAnswer(TestDataMsg testDataMsg, String actorAnswer) {
         return testDataMsg.getTestName() + " from package " + testDataMsg.getPackageId()
-                + " not succeed, expected: " + testDataMsg.getExpectedResult() + " but got: " + actorAnswer;
+                + " not succeed, expected: " + testDataMsg.getExpectedResult() + " but got: " + actorAnswer + "\n";
     }
 
     public String executeTest(TestDataMsg testDataMsg) throws ScriptException, NoSuchMethodException {
