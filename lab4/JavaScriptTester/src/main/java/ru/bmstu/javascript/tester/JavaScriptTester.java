@@ -11,6 +11,7 @@ public class JavaScriptTester {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
         engine.eval("var divideFn = function(a,b) { return a/b}");
         Invocable invocable = (Invocable) engine;
+        return invocable.invokeFunction("divideFn", "").toString();
 
     }
 }
