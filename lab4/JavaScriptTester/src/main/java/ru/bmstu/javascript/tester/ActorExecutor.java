@@ -37,7 +37,8 @@ public class ActorExecutor extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create()
                 .match(TestDataMsg.class,
-                        testDataMsg -> getSender().tell(new)
+                        testDataMsg -> getSender().tell(
+                                new StoreResultMsg(testDataMsg.getPackageId(), executeTest(testDataMsg)), self())
                         )
                 .build();
     }
