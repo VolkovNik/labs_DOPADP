@@ -10,6 +10,11 @@ import javax.script.ScriptException;
 public class ActorExecutor extends AbstractActor {
 
     public String correctAnswer(TestDataMsg testDataMsg) {
+        String answer = testDataMsg.getTestName() + " from package" + testDataMsg.getPackageId() + " succeed  "
+        return "";
+    }
+
+    public String wrongAnswer(TestDataMsg testDataMsg) {
 
         return "";
     }
