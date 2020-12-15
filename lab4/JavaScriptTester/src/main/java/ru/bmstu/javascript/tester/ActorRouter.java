@@ -3,6 +3,7 @@ package ru.bmstu.javascript.tester;
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.actor.Props;
+import akka.japi.pf.ReceiveBuilder;
 import akka.routing.RoundRobinPool;
 
 public class ActorRouter extends AbstractActor {
@@ -14,6 +15,7 @@ public class ActorRouter extends AbstractActor {
 
     @Override
     public Receive createReceive() {
-        return null;
+        return ReceiveBuilder.create()
+                .match()
     }
 }
