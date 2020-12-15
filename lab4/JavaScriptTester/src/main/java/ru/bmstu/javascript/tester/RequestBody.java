@@ -15,12 +15,12 @@ public class RequestBody {
 
     @JsonCreator
     public RequestBody(@JsonProperty("packageId")
-                           private String packageId
+                           String packageId
                                    @JsonProperty("jsScript")
-    private String jsScript
+    String jsScript
     @JsonProperty("functionName")
-    private String functionName
+    String functionName
     @JsonProperty("tests")
-    private String tests)
+    String tests)
 
 }
