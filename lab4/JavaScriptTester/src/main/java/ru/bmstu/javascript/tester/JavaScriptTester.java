@@ -51,11 +51,11 @@ public class JavaScriptTester extends AllDirectives {
         return (
                 get(
                         () -> complete("Recevied GET")
-                );
+                ),
                 post(
                         () -> complete("Recevied POST")
                 );
-        );
+        )
     }
 
 }
