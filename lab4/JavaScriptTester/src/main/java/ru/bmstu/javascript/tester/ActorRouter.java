@@ -22,9 +22,16 @@ public class ActorRouter extends AbstractActor {
                         msg -> {
                             ArrayList<TestData> testData = msg.getTests();
                             for (TestData test: testData) {
-                                TestDataMsg testDataMsg = new TestDataMsg()
+                                TestDataMsg testDataMsg = new TestDataMsg(
+                                        msg.getPackageId(),
+                                        msg.getJsScript(),
+                                        msg.getFunctionName(),
+                                        test.getTestName(),
+                                        test.getExpectedResult(),
+                                        test.getParams());
+                                actorExecutor.tell(testDataMsg, ActorRef.noSender());
                             }
-                            actorExecutor.tell(msg, ActorRef.noSender());
+
                 })
                 .match(GetResultMsg.class,
                         msg -> actorStorage.tell(msg, getSender())).build();
