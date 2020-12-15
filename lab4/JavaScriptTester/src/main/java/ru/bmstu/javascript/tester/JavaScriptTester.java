@@ -54,7 +54,7 @@ public class JavaScriptTester extends AllDirectives {
                                 (id) -> complete(""+ id + "\n"))
                 ),
                 post(
-                        () -> complete("Recevied POST")
+                        () -> entity()
                 )
         );
     }
