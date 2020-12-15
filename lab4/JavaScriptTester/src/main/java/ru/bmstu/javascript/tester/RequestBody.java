@@ -1,5 +1,6 @@
 package ru.bmstu.javascript.tester;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class RequestBody {
@@ -11,4 +12,8 @@ public class RequestBody {
     private String functionName;
     @JsonProperty("tests")
     private String tests;
+
+    @JsonCreator
+    
+
 }
