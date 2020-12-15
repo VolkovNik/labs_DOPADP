@@ -11,7 +11,7 @@ public class RequestBody {
     @JsonProperty("functionName")
     private final String functionName;
     @JsonProperty("tests")
-    private final String tests;
+    private final A tests;
 
     @JsonCreator
     public RequestBody(@JsonProperty("packageId") String packageId,
