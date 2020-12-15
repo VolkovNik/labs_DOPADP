@@ -56,7 +56,7 @@ public class JavaScriptTester extends AllDirectives {
                 ),
                 post(
                         () -> entity(Jackson.unmarshaller(RequestBody.class),
-                                (requestBody) -> complete(requestBody.getFunctionName()))
+                                (requestBody) -> complete(requestBody.getFunctionName() + "\n"))
                 )
         );
     }
