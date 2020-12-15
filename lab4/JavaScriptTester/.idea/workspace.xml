@@ -101,7 +101,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1608028862554</updated>
-      <workItem from="1608028869146" duration="2325000" />
+      <workItem from="1608028869146" duration="2528000" />
     </task>
     <servers />
   </component>
@@ -140,6 +140,10 @@
     </state>
     <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1608031228557" />
     <state width="1398" height="245" key="GridCell.Tab.0.right/0.25.1440.791@0.25.1440.791" timestamp="1608029929794" />
+    <state x="258" y="109" key="Maven.ArtifactSearchDialog" timestamp="1608032206469">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="258" y="109" key="Maven.ArtifactSearchDialog/0.0.1440.900@0.0.1440.900" timestamp="1608032206469" />
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1608030613842">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
