@@ -1,2 +1,4 @@
-package ru.bmstu.javascript.tester;public class StoreResultMsg {
+package ru.bmstu.javascript.tester;
+
+public class StoreResultMsg {
 }
