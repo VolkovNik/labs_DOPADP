@@ -16,7 +16,7 @@ public class ActorRouter extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-                .match(TestDataMsg.class,
+                .match(RequestBody.class,
                         msg -> actorExecutor.tell(msg, ActorRef.noSender()))
                 .match(GetResultMsg.class,
                         msg -> actorStorage.tell(msg, getSender())).build();
