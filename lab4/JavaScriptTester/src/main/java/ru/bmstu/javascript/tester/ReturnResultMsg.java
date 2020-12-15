@@ -16,6 +16,6 @@ public class ReturnResultMsg {
     }
 
     public ArrayList<String> getResult() {
-        return Aresult;
+        return result;
     }
 }

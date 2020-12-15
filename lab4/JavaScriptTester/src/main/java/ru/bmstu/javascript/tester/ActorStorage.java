@@ -14,7 +14,9 @@ public class ActorStorage extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create()
                 .match(GetResultMsg.class, msg -> {
-                    testResults.put("2", "ololo");
+                    ArrayList<String> results = new ArrayList<>();
+                    results.add("ololol");
+                    testResults.put("2", results);
                     String id = msg.getPackageId();
                     ArrayList<String> result = testResults.get(id);
                     sender().tell(new ReturnResultMsg(id, result), sender());
