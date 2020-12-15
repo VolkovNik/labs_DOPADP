@@ -7,8 +7,8 @@ public class RequestBody {
     private String packageId;
     @JsonProperty("jsScript")
     private String jsScript;
-    @JsonProperty("function")
-    private String packageId;
-    @JsonProperty("packageId")
+    @JsonProperty("functionName")
+    private String functionName;
+    @JsonProperty("")
     private String packageId;
 }
