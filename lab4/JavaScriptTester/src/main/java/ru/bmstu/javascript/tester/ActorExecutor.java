@@ -14,7 +14,10 @@ public class ActorExecutor extends AbstractActor {
         engine.eval(testDataMsg.getJsScript());
         Invocable invocable = (Invocable) engine;
         Object[] params = testDataMsg.getParams().toArray();
-        return (invocable.invokeFunction(requestBody.getFunctionName(), params).toString());
+        String actorTestAnswer = (invocable.invokeFunction(testDataMsg.getFunctionName(), params).toString());
+        if (actorTestAnswer.equals(testDataMsg.getExpectedResult())) {
+            return "Te"
+        }
     }
 
     @Override
