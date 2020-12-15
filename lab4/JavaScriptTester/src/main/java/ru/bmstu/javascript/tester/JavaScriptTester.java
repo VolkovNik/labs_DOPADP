@@ -28,11 +28,7 @@ public class JavaScriptTester extends AllDirectives {
 
         ActorSystem system = ActorSystem.create("routes");
         final Http http = Http.get(system);
-        ActorRef router  = getContext().actorOf(
-                new RoundRobinPool(5)
-                        .withSupervisorStrategy(strategy)
-                        .props(Props.create(ActorRouter.class),
-                "routerForTests"
+        ActorRef router  = system.actorOf(new RoundRobinPool(5).props(Props.create(ActorRouter.class), "routerForTests");
         final ActorMaterializer materializer = ActorMaterializer.create(system);
         JavaScriptTester instance = new JavaScriptTester();
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow =
