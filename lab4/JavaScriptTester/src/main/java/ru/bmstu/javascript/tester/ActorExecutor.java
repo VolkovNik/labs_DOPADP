@@ -16,7 +16,7 @@ public class ActorExecutor extends AbstractActor {
         Object[] params = testDataMsg.getParams().toArray();
         String actorTestAnswer = (invocable.invokeFunction(testDataMsg.getFunctionName(), params).toString());
         if (actorTestAnswer.equals(testDataMsg.getExpectedResult())) {
-            return "Te"
+            return 
         }
     }
 
