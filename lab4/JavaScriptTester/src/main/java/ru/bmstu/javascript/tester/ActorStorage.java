@@ -13,12 +13,11 @@ public class ActorStorage extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-                .match(GetResultMsg.class,
-                        msg -> {
+                .match(GetResultMsg.class, msg -> {
+                    testResults.put("2", "ololo");
                     String id = msg.getPackageId();
                     ArrayList<String> result = testResults.get(id);
                     sender().tell(new ReturnResultMsg(id, result), sender());
-
-                        })
+                }).build();
     }
 }
