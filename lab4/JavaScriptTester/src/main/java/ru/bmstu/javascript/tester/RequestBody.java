@@ -3,6 +3,8 @@ package ru.bmstu.javascript.tester;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.ArrayList;
+
 public class RequestBody {
     @JsonProperty("packageId")
     private final String packageId;
@@ -11,7 +13,7 @@ public class RequestBody {
     @JsonProperty("functionName")
     private final String functionName;
     @JsonProperty("tests")
-    private final A tests;
+    private final ArrayList<String> tests;
 
     @JsonCreator
     public RequestBody(@JsonProperty("packageId") String packageId,
