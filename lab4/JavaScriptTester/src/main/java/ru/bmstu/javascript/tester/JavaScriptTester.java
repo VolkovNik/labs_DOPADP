@@ -52,6 +52,7 @@ public class JavaScriptTester extends AllDirectives {
                 get(
                         () -> complete("Recevied GET")
                 )
+                
         );
     }
 
