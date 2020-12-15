@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class RequestBody {
     @JsonProperty("packageId")
-    private final String packageId;
+    private final Integer packageId;
     @JsonProperty("jsScript")
     private final String jsScript;
     @JsonProperty("functionName")
@@ -16,17 +16,17 @@ public class RequestBody {
     private final ArrayList<String> tests;
 
     @JsonCreator
-    public RequestBody(@JsonProperty("packageId") String packageId,
+    public RequestBody(@JsonProperty("packageId") Integer packageId,
                        @JsonProperty("jsScript") String jsScript,
                        @JsonProperty("functionName") String functionName,
-                       @JsonProperty("tests") String tests) {
+                       @JsonProperty("tests") ArrayList<String> tests) {
         this.packageId = packageId;
         this.jsScript = jsScript;
         this.functionName = functionName;
         this.tests = tests;
     }
 
-    public String getPackageId() {
+    public Integer getPackageId() {
         return packageId;
     }
 
@@ -38,7 +38,7 @@ public class RequestBody {
         return jsScript;
     }
 
-    public String getTests() {
+    public ArrayList<String> getTests() {
         return tests;
     }
 }
