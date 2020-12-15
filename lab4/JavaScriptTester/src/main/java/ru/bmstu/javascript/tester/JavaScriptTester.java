@@ -13,12 +13,10 @@ import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
 import akka.pattern.Patterns;
-import akka.routing.RoundRobinPool;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 import scala.concurrent.Future;
 
-import javax.script.ScriptException;
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
 
@@ -58,7 +56,7 @@ public class JavaScriptTester extends AllDirectives {
                         () -> entity(Jackson.unmarshaller(RequestBody.class),
                                 (requestBody) -> {
                             router.tell(requestBody, ActorRef.noSender());
-                            complete("Test Accepted \n");
+                            return complete("Test Accepted \n");
                                 })
                 )
         );
