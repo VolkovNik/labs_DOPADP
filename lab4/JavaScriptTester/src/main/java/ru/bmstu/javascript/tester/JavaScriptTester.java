@@ -53,7 +53,7 @@ public class JavaScriptTester extends AllDirectives {
                         () -> complete("Recevied GET")
                 ).orElse(
                         () -> complete("Recevied something else")
-                ))
+                ));
     }
 
 }
