@@ -29,7 +29,7 @@ public class ActorRouter extends AbstractActor {
                                         test.getTestName(),
                                         test.getExpectedResult(),
                                         test.getParams());
-                                actorExecutor.tell(testDataMsg, self());
+                                actorExecutor.tell(testDataMsg, actorStorage);
                             }
 
                 })

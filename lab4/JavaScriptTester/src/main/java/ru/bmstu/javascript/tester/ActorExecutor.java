@@ -1,6 +1,7 @@
 package ru.bmstu.javascript.tester;
 
 import akka.actor.AbstractActor;
+import akka.actor.ActorRef;
 import akka.japi.pf.ReceiveBuilder;
 
 import javax.script.Invocable;
@@ -38,7 +39,7 @@ public class ActorExecutor extends AbstractActor {
         return ReceiveBuilder.create()
                 .match(TestDataMsg.class,
                         testDataMsg -> getSender().tell(
-                                new StoreResultMsg(testDataMsg.getPackageId(), executeTest(testDataMsg)), self())
+                                new StoreResultMsg(testDataMsg.getPackageId(), executeTest(testDataMsg)), ActorRef.noSender())
                         )
                 .build();
     }
