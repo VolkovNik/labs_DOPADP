@@ -22,6 +22,7 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Future;
 
 public class JavaScriptTester extends AllDirectives {
     public static void main(String[] args) throws ScriptException, NoSuchMethodException, IOException {
@@ -51,7 +52,7 @@ public class JavaScriptTester extends AllDirectives {
                 get(
                         () -> parameter("packageId",
                                 (id) -> {
-                            
+                                    Future<Object> future = 
                                 })
                 ),
                 post(
