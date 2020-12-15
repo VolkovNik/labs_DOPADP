@@ -34,7 +34,7 @@ public class JavaScriptTester extends AllDirectives {
         final ActorMaterializer materializer = ActorMaterializer.create(system);
         JavaScriptTester instance = new JavaScriptTester();
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow =
-                instance.createRoute().flow(system, materializer);
+                instance.createRoute(router).flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
                 ConnectHttp.toHost("localhost", 8080),
@@ -48,12 +48,12 @@ public class JavaScriptTester extends AllDirectives {
 
     }
 
-    private Route createRoute() {
+    private Route createRoute(ActorRef router) {
         return route(
                 get(
                         () -> parameter("packageId",
                                 (id) -> {
-                                    Future<Object> future = Patterns.ask()
+                                    Future<Object> future = Patterns.ask(router, )
                                 })
                 ),
                 post(
