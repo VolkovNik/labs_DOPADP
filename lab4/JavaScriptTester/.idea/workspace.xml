@@ -23,7 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed209476-1b67-41b1-ab2e-075e65044e60" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/JavaScriptTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/JavaScriptTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/ActorStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/ActorStorage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +103,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1608028862554</updated>
-      <workItem from="1608028869146" duration="9972000" />
+      <workItem from="1608028869146" duration="10411000" />
     </task>
     <servers />
   </component>
@@ -122,10 +122,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="533" y="160" key="#com.intellij.ide.util.MemberChooser" timestamp="1608044336739">
+    <state x="533" y="160" key="#com.intellij.ide.util.MemberChooser" timestamp="1608048721229">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="533" y="160" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1608044336739" />
+    <state x="533" y="160" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1608048721229" />
     <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1608039036881">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
