@@ -56,7 +56,10 @@ public class JavaScriptTester extends AllDirectives {
                 ),
                 post(
                         () -> entity(Jackson.unmarshaller(RequestBody.class),
-                                (requestBody) -> complete(requestBody.getFunctionName() + "\n"))
+                                (requestBody) -> {
+                            router.tell(requestBody, ActorRef.noSender());
+                            complete("Test Accepted \n");
+                                })
                 )
         );
     }
