@@ -11,10 +11,10 @@ public class ActorExecutor extends AbstractActor {
 
     public String executeTest(RequestBody requestBody) throws ScriptException, NoSuchMethodException {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
-        engine.eval("var divideFn = function(a,b) { return a/b}");
+        engine.eval(requestBody.getJsScript());
         Invocable invocable = (Invocable) engine;
-        Object[] params = {2, 1};
-        return (invocable.invokeFunction("divideFn", params).toString());
+        Object[] params = requestBody.getTests().toArray();
+        return (invocable.invokeFunction(requestBody.getFunctionName(), params).toString());
     }
 
     @Override
