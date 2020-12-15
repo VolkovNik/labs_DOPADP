@@ -50,7 +50,9 @@ public class JavaScriptTester extends AllDirectives {
         return route(
                 get(
                         () -> parameter("packageId",
-                                (id) -> complete("" + id + "\n"))
+                                (id) -> {
+                            
+                                })
                 ),
                 post(
                         () -> entity(Jackson.unmarshaller(RequestBody.class),
