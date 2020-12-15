@@ -12,6 +12,7 @@ import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
+import akka.pattern.Patterns;
 import akka.routing.RoundRobinPool;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
@@ -52,7 +53,7 @@ public class JavaScriptTester extends AllDirectives {
                 get(
                         () -> parameter("packageId",
                                 (id) -> {
-                                    Future<Object> future = 
+                                    Future<Object> future = Patterns.ask()
                                 })
                 ),
                 post(
