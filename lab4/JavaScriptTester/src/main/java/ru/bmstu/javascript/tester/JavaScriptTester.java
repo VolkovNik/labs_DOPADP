@@ -16,6 +16,7 @@ import akka.pattern.Patterns;
 import akka.routing.RoundRobinPool;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
+import scala.concurrent.Future;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
@@ -23,7 +24,6 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
-import java.util.concurrent.Future;
 
 public class JavaScriptTester extends AllDirectives {
     public static void main(String[] args) throws ScriptException, NoSuchMethodException, IOException {
@@ -54,7 +54,7 @@ public class JavaScriptTester extends AllDirectives {
                         () -> parameter("packageId",
                                 (id) -> {
                                     Future<Object> future = Patterns.ask(router, new GetResultMsg(id), 5);
-                                    return
+                                    return completeOKWithFuture("")
                                 })
                 ),
                 post(
