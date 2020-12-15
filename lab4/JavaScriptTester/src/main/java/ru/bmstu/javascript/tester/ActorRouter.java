@@ -6,6 +6,8 @@ import akka.actor.Props;
 import akka.japi.pf.ReceiveBuilder;
 import akka.routing.RoundRobinPool;
 
+import java.util.ArrayList;
+
 public class ActorRouter extends AbstractActor {
 
     private final ActorRef actorExecutor = getContext().actorOf(
@@ -18,8 +20,11 @@ public class ActorRouter extends AbstractActor {
         return ReceiveBuilder.create()
                 .match(RequestBody.class,
                         msg -> {
-
-                                actorExecutor.tell(msg, ActorRef.noSender());
+                            ArrayList<TestData> testData = msg.getTests();
+                            for (TestData test: testData) {
+                                TestDataMsg testDataMsg = new TestDataMsg()
+                            }
+                            actorExecutor.tell(msg, ActorRef.noSender());
                 })
                 .match(GetResultMsg.class,
                         msg -> actorStorage.tell(msg, getSender())).build();

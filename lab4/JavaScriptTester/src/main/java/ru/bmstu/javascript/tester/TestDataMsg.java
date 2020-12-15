@@ -10,7 +10,7 @@ public class TestDataMsg {
     private final String expectedResult;
     private final ArrayList<String> params;
 
-    public TestData (String packageId,
+    public TestDataMsg (String packageId,
                      String jsScript,
                      String functionName,
                      String testName,
