@@ -1,10 +1,12 @@
 package ru.bmstu.javascript.tester;
 
+import java.util.ArrayList;
+
 public class ReturnResultMsg {
     private final String packageId;
-    private final String result;
+    private final ArrayList<String> result;
 
-    public ReturnResultMsg(String packageId, String result) {
+    public ReturnResultMsg(String packageId, ArrayList<String> result) {
         this.packageId = packageId;
         this.result = result;
     }
@@ -13,7 +15,7 @@ public class ReturnResultMsg {
         return packageId;
     }
 
-    public String getResult() {
-        return result;
+    public ArrayList<String> getResult() {
+        return Aresult;
     }
 }

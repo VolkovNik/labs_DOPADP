@@ -17,7 +17,7 @@ public class ActorStorage extends AbstractActor {
                         msg -> {
                     String id = msg.getPackageId();
                     ArrayList<String> result = testResults.get(id);
-                    sender().tell(new ReturnResultMsg());
+                    sender().tell(new ReturnResultMsg(id, result), sender());
 
                         })
     }
