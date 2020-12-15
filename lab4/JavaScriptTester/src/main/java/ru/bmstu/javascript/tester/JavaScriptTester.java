@@ -7,6 +7,7 @@ import akka.http.javadsl.Http;
 import akka.http.javadsl.ServerBinding;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
+import akka.http.javadsl.server.AllDirectives;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 
@@ -17,7 +18,7 @@ import javax.script.ScriptException;
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
 
-public class JavaScriptTester {
+public class JavaScriptTester extends AllDirectives {
     public static void main(String[] args) throws ScriptException, NoSuchMethodException, IOException {
 
 //        ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
