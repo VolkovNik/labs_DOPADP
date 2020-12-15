@@ -6,4 +6,8 @@ public class GetResultMsg {
     public GetResultMsg(String packageId) {
         this.packageId = packageId;
     }
+
+    public String getPackageId() {
+        return packageId;
+    }
 }
