@@ -54,7 +54,7 @@ public class JavaScriptTester extends AllDirectives {
                         () -> parameter("packageId",
                                 (id) -> {
                                     Future<Object> future = Patterns.ask(router, new GetResultMsg(id), 5);
-                                    return completeOKWithFuture("")
+                                    return completeOKWithFuture(future, )
                                 })
                 ),
                 post(
