@@ -13,13 +13,13 @@ public class RequestBody {
     @JsonProperty("functionName")
     private final String functionName;
     @JsonProperty("tests")
-    private final ArrayList<String> tests;
+    private final ArrayList<TestData> tests;
 
     @JsonCreator
     public RequestBody(@JsonProperty("packageId") String packageId,
                        @JsonProperty("jsScript") String jsScript,
                        @JsonProperty("functionName") String functionName,
-                       @JsonProperty("tests") ArrayList<String> tests) {
+                       @JsonProperty("tests") ArrayList<TestData> tests) {
         this.packageId = packageId;
         this.jsScript = jsScript;
         this.functionName = functionName;
@@ -38,7 +38,7 @@ public class RequestBody {
         return jsScript;
     }
 
-    public ArrayList<String> getTests() {
+    public ArrayList<TestData> getTests() {
         return tests;
     }
 }
