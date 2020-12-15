@@ -16,7 +16,7 @@ public class ActorStorage extends AbstractActor {
                 .match(GetResultMsg.class,
                         msg -> {
                     String id = msg.getPackageId();
-                    ArrayList<String> results = testResults.getOrDefault(id, new ArrayList<>());
+                    String result = testResults.get();
 
                         })
     }
