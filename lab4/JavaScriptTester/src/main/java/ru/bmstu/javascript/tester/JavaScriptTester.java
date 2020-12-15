@@ -50,7 +50,7 @@ public class JavaScriptTester extends AllDirectives {
     private Route createRoute() {
         return route(
                 get(
-                        () -> (parameter("PackageID")
+                        () -> (parameter("PackageID", id) ->
                 ),
                 post(
                         () -> complete("Recevied POST")
