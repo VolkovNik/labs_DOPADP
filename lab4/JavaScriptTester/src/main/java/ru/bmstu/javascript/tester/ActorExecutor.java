@@ -9,6 +9,11 @@ import javax.script.ScriptException;
 
 public class ActorExecutor extends AbstractActor {
 
+    public String correctAnswer(TestDataMsg testDataMsg) {
+
+        return "";
+    }
+
     public String executeTest(TestDataMsg testDataMsg) throws ScriptException, NoSuchMethodException {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
         engine.eval(testDataMsg.getJsScript());
@@ -16,7 +21,7 @@ public class ActorExecutor extends AbstractActor {
         Object[] params = testDataMsg.getParams().toArray();
         String actorTestAnswer = (invocable.invokeFunction(testDataMsg.getFunctionName(), params).toString());
         if (actorTestAnswer.equals(testDataMsg.getExpectedResult())) {
-            return 
+            return testDataMsg.getTestName() + ""
         }
     }
 
