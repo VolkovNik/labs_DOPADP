@@ -107,7 +107,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1608028862554</updated>
-      <workItem from="1608028869146" duration="21698000" />
+      <workItem from="1608028869146" duration="22003000" />
     </task>
     <servers />
   </component>
@@ -130,29 +130,29 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="533" y="160" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1608050310216" />
-    <state x="499" y="323" width="704" height="262" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1608107290593">
+    <state x="499" y="323" width="704" height="262" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1608107942478">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="499" y="323" width="704" height="262" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1440.900@0.0.1440.900" timestamp="1608107290593" />
-    <state width="1398" height="320" key="GridCell.Tab.0.bottom" timestamp="1608062843335">
-      <screen x="0" y="25" width="1440" height="791" />
+    <state x="499" y="323" width="704" height="262" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1440.900@0.0.1440.900" timestamp="1608107942478" />
+    <state width="1398" height="320" key="GridCell.Tab.0.bottom" timestamp="1608107956831">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="320" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1608062644373" />
+    <state width="1398" height="320" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1608107956831" />
     <state width="1398" height="320" key="GridCell.Tab.0.bottom/0.25.1440.791@0.25.1440.791" timestamp="1608062843335" />
-    <state width="1398" height="320" key="GridCell.Tab.0.center" timestamp="1608062843333">
-      <screen x="0" y="25" width="1440" height="791" />
+    <state width="1398" height="320" key="GridCell.Tab.0.center" timestamp="1608107956829">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="320" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1608062644371" />
+    <state width="1398" height="320" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1608107956829" />
     <state width="1398" height="320" key="GridCell.Tab.0.center/0.25.1440.791@0.25.1440.791" timestamp="1608062843333" />
-    <state width="1398" height="320" key="GridCell.Tab.0.left" timestamp="1608062843328">
-      <screen x="0" y="25" width="1440" height="791" />
+    <state width="1398" height="320" key="GridCell.Tab.0.left" timestamp="1608107956827">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="320" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1608062644370" />
+    <state width="1398" height="320" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1608107956827" />
     <state width="1398" height="320" key="GridCell.Tab.0.left/0.25.1440.791@0.25.1440.791" timestamp="1608062843328" />
-    <state width="1398" height="320" key="GridCell.Tab.0.right" timestamp="1608062843334">
-      <screen x="0" y="25" width="1440" height="791" />
+    <state width="1398" height="320" key="GridCell.Tab.0.right" timestamp="1608107956830">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="320" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1608062644372" />
+    <state width="1398" height="320" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1608107956830" />
     <state width="1398" height="320" key="GridCell.Tab.0.right/0.25.1440.791@0.25.1440.791" timestamp="1608062843334" />
     <state x="258" y="109" key="Maven.ArtifactSearchDialog" timestamp="1608032206469">
       <screen x="0" y="0" width="1440" height="900" />
