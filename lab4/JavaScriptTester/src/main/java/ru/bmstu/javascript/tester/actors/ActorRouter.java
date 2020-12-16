@@ -8,8 +8,8 @@ import akka.routing.RoundRobinPool;
 
 import java.util.ArrayList;
 
-import ru.bmstu.javascript.tester.RequestBody;
-import ru.bmstu.javascript.tester.TestData;
+import ru.bmstu.javascript.tester.utils.RequestBody;
+import ru.bmstu.javascript.tester.utils.TestData;
 import ru.bmstu.javascript.tester.messages.*;
 
 public class ActorRouter extends AbstractActor {

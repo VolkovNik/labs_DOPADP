@@ -16,6 +16,7 @@ import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 import ru.bmstu.javascript.tester.actors.ActorRouter;
+import ru.bmstu.javascript.tester.utils.RequestBody;
 import scala.concurrent.Future;
 
 import java.io.IOException;

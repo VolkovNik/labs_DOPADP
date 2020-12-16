@@ -1,4 +1,4 @@
-package ru.bmstu.javascript.tester;
+package ru.bmstu.javascript.tester.utils;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
