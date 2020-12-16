@@ -5,7 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 
 public class TestData {
-    @JsonProperty("testName")
+    private final String FIELD_TEST_NAME = "testName";
+
+    @JsonProperty(FIELD)
     private final String testName;
     @JsonProperty("expectedResult")
     private final String expectedResult;
