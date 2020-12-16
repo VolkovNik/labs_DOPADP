@@ -25,6 +25,28 @@ import java.util.concurrent.CompletionStage;
 import ru.bmstu.javascript.tester.messages.*;
 
 public class JavaScriptTester extends AllDirectives {
+
+    private final static String
+
+    private Route createRoute(ActorRef router) {
+        return route(
+                get(
+                        () -> parameter("packageId",
+                                (id) -> {
+                                    Future<Object> future = Patterns.ask(router, new GetResultMsg(id), 5);
+                                    return completeOKWithFuture(future, Jackson.marshaller());
+                                })
+                ),
+                post(
+                        () -> entity(Jackson.unmarshaller(RequestBody.class),
+                                (requestBody) -> {
+                                    router.tell(requestBody, ActorRef.noSender());
+                                    return complete("Test Accepted \n");
+                                })
+                )
+        );
+    }
+
     public static void main(String[] args) throws IOException {
 
         ActorSystem system = ActorSystem.create("routes");
@@ -46,25 +68,6 @@ public class JavaScriptTester extends AllDirectives {
                 .thenCompose(ServerBinding::unbind)
                 .thenAccept(unbound -> system.terminate());
 
-    }
-
-    private Route createRoute(ActorRef router) {
-        return route(
-                get(
-                        () -> parameter("packageId",
-                                (id) -> {
-                                    Future<Object> future = Patterns.ask(router, new GetResultMsg(id), 5);
-                                    return completeOKWithFuture(future, Jackson.marshaller());
-                                })
-                ),
-                post(
-                        () -> entity(Jackson.unmarshaller(RequestBody.class),
-                                (requestBody) -> {
-                            router.tell(requestBody, ActorRef.noSender());
-                            return complete("Test Accepted \n");
-                                })
-                )
-        );
     }
 
 }
