@@ -14,8 +14,10 @@ import ru.bmstu.javascript.tester.messages.*;
 
 public class ActorRouter extends AbstractActor {
 
+    private final int NUMBER_OF_EXECUTORS = 5;
+
     private final ActorRef actorExecutor = getContext().actorOf(
-            new RoundRobinPool(5).props(Props.create(ActorExecutor.class)));
+            new RoundRobinPool(NUMBER_OF_EXECUTORS).props(Props.create(ActorExecutor.class)));
     private final ActorRef actorStorage = getContext().actorOf(Props.create(ActorStorage.class));
 
 

@@ -23,7 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed209476-1b67-41b1-ab2e-075e65044e60" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/JavaScriptTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/JavaScriptTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/actors/ActorExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/actors/ActorExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/actors/ActorRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/actors/ActorRouter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/actors/ActorStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/actors/ActorStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/utils/RequestBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/utils/RequestBody.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +112,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1608028862554</updated>
-      <workItem from="1608028869146" duration="22593000" />
+      <workItem from="1608028869146" duration="23141000" />
     </task>
     <servers />
   </component>
@@ -160,9 +163,9 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="258" y="109" key="Maven.ArtifactSearchDialog/0.0.1440.900@0.0.1440.900" timestamp="1608032206469" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1608030613842">
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1608109093723">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1608030613842" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1608109093723" />
   </component>
 </project>

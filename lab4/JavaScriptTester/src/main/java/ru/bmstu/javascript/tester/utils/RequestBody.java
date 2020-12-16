@@ -6,20 +6,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 
 public class RequestBody {
-    @JsonProperty("packageId")
+    private final String FIELD_PACKAGE_ID = "packageId";
+    private final String FIELD_JS_SCRIPT = "jsScript";
+    private final String FIELD_FUNCTION_NAME = "functionName";
+    private final String FIELD_TESTS = "tests";
+
+    @JsonProperty(FIELD_PACKAGE_ID)
     private final String packageId;
-    @JsonProperty("jsScript")
+    @JsonProperty(FIELD_JS_SCRIPT)
     private final String jsScript;
-    @JsonProperty("functionName")
+    @JsonProperty(FIELD_FUNCTION_NAME)
     private final String functionName;
-    @JsonProperty("tests")
+    @JsonProperty(FIELD_TESTS)
     private final ArrayList<TestData> tests;
 
     @JsonCreator
-    public RequestBody(@JsonProperty("packageId") String packageId,
-                       @JsonProperty("jsScript") String jsScript,
-                       @JsonProperty("functionName") String functionName,
-                       @JsonProperty("tests") ArrayList<TestData> tests) {
+    public RequestBody(@JsonProperty(FIELD_PACKAGE_ID) String packageId,
+                       @JsonProperty(FIELD_JS_SCRIPT) String jsScript,
+                       @JsonProperty(FIELD_FUNCTION_NAME) String functionName,
+                       @JsonProperty(FIELD_TESTS) ArrayList<TestData> tests) {
         this.packageId = packageId;
         this.jsScript = jsScript;
         this.functionName = functionName;
