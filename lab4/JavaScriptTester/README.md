@@ -15,7 +15,7 @@
 
  ### Логи запуска
 
- ![Image alt](https://github.com/VolkovNik/{repository}/raw/{branch}/{path}/image.png)
+ ![Image alt](https://github.com/VolkovNik/lab_DOPADP/raw/main/lab4/log.png)
 
 ***
 
