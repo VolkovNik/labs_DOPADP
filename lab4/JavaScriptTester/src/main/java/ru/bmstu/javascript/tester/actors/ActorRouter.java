@@ -1,4 +1,4 @@
-package ru.bmstu.javascript.tester;
+package ru.bmstu.javascript.tester.actors;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
@@ -8,6 +8,8 @@ import akka.routing.RoundRobinPool;
 
 import java.util.ArrayList;
 
+import ru.bmstu.javascript.tester.RequestBody;
+import ru.bmstu.javascript.tester.TestData;
 import ru.bmstu.javascript.tester.messages.*;
 
 public class ActorRouter extends AbstractActor {

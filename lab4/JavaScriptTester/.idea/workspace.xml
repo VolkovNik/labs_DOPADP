@@ -23,7 +23,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed209476-1b67-41b1-ab2e-075e65044e60" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/ActorStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/ActorStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/ActorExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/actors/ActorExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/ActorRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/actors/ActorRouter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/ActorStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/actors/ActorStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/JavaScriptTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/JavaScriptTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/messages/GetResultMsg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/messages/GetResultMsg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/messages/ReturnResultMsg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/messages/ReturnResultMsg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/messages/StoreResultMsg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/messages/StoreResultMsg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/messages/TestDataMsg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/messages/TestDataMsg.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +77,7 @@
       <module name="JavaScriptTester" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.bmstu.javascript.tester.*" />
+          <option name="PATTERN" value="ru.bmstu.javascript.tester.actors.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -103,7 +110,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1608028862554</updated>
-      <workItem from="1608028869146" duration="21010000" />
+      <workItem from="1608028869146" duration="21450000" />
     </task>
     <servers />
   </component>
@@ -126,6 +133,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="533" y="160" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1608050310216" />
+    <state x="499" y="323" width="704" height="262" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1608107290593">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="499" y="323" width="704" height="262" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1440.900@0.0.1440.900" timestamp="1608107290593" />
     <state width="1398" height="320" key="GridCell.Tab.0.bottom" timestamp="1608062843335">
       <screen x="0" y="25" width="1440" height="791" />
     </state>

@@ -1,4 +1,4 @@
-package ru.bmstu.javascript.tester;
+package ru.bmstu.javascript.tester.actors;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
