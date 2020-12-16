@@ -6,18 +6,20 @@ import java.util.ArrayList;
 
 public class TestData {
     private final String FIELD_TEST_NAME = "testName";
+    private final String FIELD_EXPECTED_RESULT = "expectedResult";
+    private final String FIELD_PARAMS = "params";
 
-    @JsonProperty("testName")
+    @JsonProperty(FIELD_TEST_NAME)
     private final String testName;
-    @JsonProperty("expectedResult")
+    @JsonProperty(FIELD_EXPECTED_RESULT)
     private final String expectedResult;
-    @JsonProperty("params")
+    @JsonProperty(FIELD_PARAMS)
     private final ArrayList<String> params;
 
     public TestData (
-            @JsonProperty("testName") String testName,
-            @JsonProperty("expectedResult") String expectedResult,
-            @JsonProperty("params") ArrayList<String> params) {
+            @JsonProperty(FIELD_TEST_NAME) String testName,
+            @JsonProperty(FIELD_EXPECTED_RESULT) String expectedResult,
+            @JsonProperty(FIELD_PARAMS) ArrayList<String> params) {
         this.testName = testName;
         this.expectedResult = expectedResult;
         this.params = params;
