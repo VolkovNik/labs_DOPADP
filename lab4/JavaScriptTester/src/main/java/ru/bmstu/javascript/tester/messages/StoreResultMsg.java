@@ -1,4 +1,4 @@
-package ru.bmstu.javascript.tester;
+package ru.bmstu.javascript.tester.messages;
 
 public class StoreResultMsg {
     private final String packageId;

@@ -20,6 +20,8 @@ import scala.concurrent.Future;
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
 
+import ru.bmstu.javascript.tester.messages.*;
+
 public class JavaScriptTester extends AllDirectives {
     public static void main(String[] args) throws IOException {
 

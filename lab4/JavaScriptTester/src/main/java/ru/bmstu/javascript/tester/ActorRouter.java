@@ -8,6 +8,8 @@ import akka.routing.RoundRobinPool;
 
 import java.util.ArrayList;
 
+import ru.bmstu.javascript.tester.messages.*;
+
 public class ActorRouter extends AbstractActor {
 
     private final ActorRef actorExecutor = getContext().actorOf(

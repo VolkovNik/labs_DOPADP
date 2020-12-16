@@ -9,6 +9,8 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
+import ru.bmstu.javascript.tester.messages.*;
+
 public class ActorExecutor extends AbstractActor {
 
     public String correctAnswer(TestDataMsg testDataMsg) {
