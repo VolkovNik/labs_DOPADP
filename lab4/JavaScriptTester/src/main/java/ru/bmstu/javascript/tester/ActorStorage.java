@@ -7,6 +7,8 @@ import akka.japi.pf.ReceiveBuilder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import ru.bmstu.javascript.tester.Messages.*;
+
 public class ActorStorage extends AbstractActor {
     private final HashMap<String, ArrayList<String>> testResults = new HashMap<>();
 
