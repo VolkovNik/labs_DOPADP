@@ -26,14 +26,20 @@ import ru.bmstu.javascript.tester.messages.*;
 
 public class JavaScriptTester extends AllDirectives {
 
-    private final static String
+    private final static String GET_PARAMETER = "packageId";
+    private final static String MSG_TEST_ACCEPT = "Test Accepted \n";
+    private final static int TIMEOUT_FOR_FUTURE = 5;
+    private final static String SYSTEM_NAME = "routes";
+    private final static String HOST = "localhost";
+    private final static int PORT = 8080;
+    private final static String MSG_RUNNING_SERVER = "Server online at http://localhost:8080/\nPress RETURN to stop...";
 
     private Route createRoute(ActorRef router) {
         return route(
                 get(
-                        () -> parameter("packageId",
+                        () -> parameter(GET_PARAMETER,
                                 (id) -> {
-                                    Future<Object> future = Patterns.ask(router, new GetResultMsg(id), 5);
+                                    Future<Object> future = Patterns.ask(router, new GetResultMsg(id), TIMEOUT_FOR_FUTURE);
                                     return completeOKWithFuture(future, Jackson.marshaller());
                                 })
                 ),
@@ -41,7 +47,7 @@ public class JavaScriptTester extends AllDirectives {
                         () -> entity(Jackson.unmarshaller(RequestBody.class),
                                 (requestBody) -> {
                                     router.tell(requestBody, ActorRef.noSender());
-                                    return complete("Test Accepted \n");
+                                    return complete(MSG_TEST_ACCEPT);
                                 })
                 )
         );
@@ -49,7 +55,7 @@ public class JavaScriptTester extends AllDirectives {
 
     public static void main(String[] args) throws IOException {
 
-        ActorSystem system = ActorSystem.create("routes");
+        ActorSystem system = ActorSystem.create(SYSTEM_NAME);
         final Http http = Http.get(system);
 
         final ActorMaterializer materializer = ActorMaterializer.create(system);
@@ -59,10 +65,10 @@ public class JavaScriptTester extends AllDirectives {
                 instance.createRoute(router).flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
-                ConnectHttp.toHost("localhost", 8080),
+                ConnectHttp.toHost(HOST, PORT),
                 materializer);
 
-        System.out.println("Server online at http://localhost:8080/\nPress RETURN to stop...");
+        System.out.println(MSG_RUNNING_SERVER);
         System.in.read();
         binding
                 .thenCompose(ServerBinding::unbind)
