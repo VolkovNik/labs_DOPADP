@@ -15,15 +15,20 @@ public class ActorExecutor extends AbstractActor {
 
     private final String JS_ENGINGE = "nashorn";
     private final String STR_FROM_PACKAGE = " from package ";
+    private final String STR_SUCCEED_WIHT_RSLT = " succeed with result ";
+    private final String STR_NOT_SUCCEED = " not succeed, expected: ";
+    private final String STR_BUT_GOT = " but got: ";
+    private final String STR_WITH_PARAMS = " with params: ";
 
     public String correctAnswer(TestDataMsg testDataMsg) {
         return testDataMsg.getTestName() + STR_FROM_PACKAGE + testDataMsg.getPackageId()
-                + " succeed with result " + testDataMsg.getExpectedResult();
+                + STR_SUCCEED_WIHT_RSLT + testDataMsg.getExpectedResult();
     }
 
     public String wrongAnswer(TestDataMsg testDataMsg, String actorAnswer) {
         return testDataMsg.getTestName() + STR_FROM_PACKAGE + testDataMsg.getPackageId()
-                + " not succeed, expected: " + testDataMsg.getExpectedResult() + " but got: " + actorAnswer;
+                + STR_NOT_SUCCEED + testDataMsg.getExpectedResult() + STR_BUT_GOT + actorAnswer
+                + STR_WITH_PARAMS + testDataMsg.getParams();
     }
 
     public String executeTest(TestDataMsg testDataMsg) throws ScriptException, NoSuchMethodException {

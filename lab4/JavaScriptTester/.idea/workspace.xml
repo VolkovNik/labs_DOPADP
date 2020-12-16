@@ -23,6 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed209476-1b67-41b1-ab2e-075e65044e60" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/actors/ActorExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/actors/ActorExecutor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/actors/ActorRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/actors/ActorRouter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/actors/ActorStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/bmstu/javascript/tester/actors/ActorStorage.java" afterDir="false" />
@@ -112,7 +113,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1608028862554</updated>
-      <workItem from="1608028869146" duration="23141000" />
+      <workItem from="1608028869146" duration="23483000" />
     </task>
     <servers />
   </component>
