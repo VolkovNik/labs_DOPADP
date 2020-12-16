@@ -29,9 +29,10 @@ public class JavaScriptTester extends AllDirectives {
 
         ActorSystem system = ActorSystem.create("routes");
         final Http http = Http.get(system);
-        ActorRef router  = system.actorOf(Props.create(ActorRouter.class));
+
         final ActorMaterializer materializer = ActorMaterializer.create(system);
         JavaScriptTester instance = new JavaScriptTester();
+        ActorRef router  = system.actorOf(Props.create(ActorRouter.class));
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow =
                 instance.createRoute(router).flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
