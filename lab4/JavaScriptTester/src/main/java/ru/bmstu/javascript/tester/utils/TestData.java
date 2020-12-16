@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class TestData {
     private final String FIELD_TEST_NAME = "testName";
 
-    @JsonProperty(FIELD)
+    @JsonProperty("testName")
     private final String testName;
     @JsonProperty("expectedResult")
     private final String expectedResult;
