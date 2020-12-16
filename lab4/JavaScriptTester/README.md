@@ -15,7 +15,7 @@
 
  ### Логи запуска
 
- ![Image alt](https://github.com/VolkovNik/labs_DOPADP/raw/main/lab4/log.png)
+ ![Image alt](https://github.com/VolkovNik/labs_DOPADP/raw/main/lab4/JavaScriptTester/log.png)
 
 ***
 
