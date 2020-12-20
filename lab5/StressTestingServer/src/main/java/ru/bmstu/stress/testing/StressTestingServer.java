@@ -36,12 +36,8 @@ public class StressTestingServer extends AllDirectives {
 
         ActorSystem system = ActorSystem.create(SYSTEM_NAME);
         final Http http = Http.get(system);
-
         final ActorMaterializer materializer = ActorMaterializer.create(system);
-        StressTestingServer instance = new StressTestingServer();
-        //ActorRef router  = system.actorOf(Props.create(ActorRouter.class));
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow =
-                instance.createRoute(router).flow(system, materializer);
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow; // вызов метода которому передаем HTTP, ActorSystem и ActorMaterializer
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
                 ConnectHttp.toHost(HOST, PORT),
