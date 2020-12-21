@@ -91,7 +91,7 @@ public class StressTestingServer extends AllDirectives {
                                                             Instant timeStart = Instant.now();
                                                             Future<Response> whenResponse = asyncHttpClient.prepareGet(testUrl).execute();
                                                             whenResponse.get();
-                                                            Long timeFull = timeStart.until(Instant.now(), ChronoUnit.SECONDS);
+                                                            Long timeFull = timeStart.until(Instant.now(), ChronoUnit.MILLIS);
                                                             return CompletableFuture.completedFuture(timeFull.intValue());
                                                         }
                                                 );
