@@ -66,7 +66,7 @@ public class StressTestingServer extends AllDirectives {
                 ).mapAsync(
                         1, (Pair<String, Integer> p) ->{
 
-                            return new Pair<>(p.first(), p.second());
+                            return 
                         }
                         ).map(
                         (Pair<String, Integer> p) -> {
