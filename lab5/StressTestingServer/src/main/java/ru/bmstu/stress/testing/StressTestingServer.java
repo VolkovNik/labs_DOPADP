@@ -66,7 +66,9 @@ public class StressTestingServer extends AllDirectives {
                             return new Pair<>(URL, count);
                         }
                 ).mapAsync(
-                        1, (Pair<String, Integer> p) -> CompletableFuture.completedFuture(1)
+                        1, (Pair<String, Integer> p) -> {
+                            // TODO вызов актора Patterns.ask ответ обрабатываем с помощью thenCompose
+                        }
                         ).map(
                         (Pair<String, Integer> p) -> {
                             // TODO послать в кэширующий актор
