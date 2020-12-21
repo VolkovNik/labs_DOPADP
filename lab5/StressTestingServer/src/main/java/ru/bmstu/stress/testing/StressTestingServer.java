@@ -12,6 +12,7 @@ import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
+import akka.japi.Pair;
 import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
@@ -37,7 +38,7 @@ public class StressTestingServer extends AllDirectives {
         ActorSystem system = ActorSystem.create(SYSTEM_NAME);
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = createFlow(); // вызов метода которому передаем HTTP, ActorSystem и ActorMaterializer
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = createFlow(materializer); // вызов метода которому передаем HTTP, ActorSystem и ActorMaterializer
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
                 ConnectHttp.toHost(HOST, PORT),
@@ -52,7 +53,17 @@ public class StressTestingServer extends AllDirectives {
     }
 
     public static Flow<HttpRequest, HttpResponse, NotUsed> createFlow(ActorMaterializer materializer) {
-        return Flow;
+        return Flow.of(HttpRequest.class)
+                .map(
+                        (req) -> {
+                            return new Pair<>(1, 1);
+                        }
+                ).map(
+                        (Pair<Integer, Integer> p) -> {
+                            // TODO послать в кэширующий актор
+                            return HttpResponse.create().withEntity("hello response");
+                        }
+                );
     }
 
 }
