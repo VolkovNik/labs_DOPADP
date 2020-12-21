@@ -7,4 +7,4 @@
 
 - Лабораторная работа 4 сделана (в папке lab4/JavaScriptTester)
 
-- Лабораторная работа 5 в процессе (в папке lab5/StressTestingServer)
+- Лабораторная работа 5 сделана (в папке lab5/StressTestingServer)
