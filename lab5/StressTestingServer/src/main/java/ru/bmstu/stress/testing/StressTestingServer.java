@@ -10,6 +10,7 @@ import akka.http.javadsl.ServerBinding;
 import akka.http.javadsl.marshallers.jackson.Jackson;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
+import akka.http.javadsl.model.Query;
 import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
 import akka.japi.Pair;
@@ -58,8 +59,9 @@ public class StressTestingServer extends AllDirectives {
                 .map(
                         (req) -> {
                             //System.out.println(req.getUri().query().get("packageId").get());
-                            String URL = req.getUri().query().get("testUrl").get();
-                            Integer count = 0;//Integer.parseInt(req.getUri().query().get("count").get());
+                            Query queryParams = req.getUri().query();
+                            String URL = queryParams.get("testUrl").get();
+                            Integer count = Integer.parseInt(queryParams.get("count").get());
                             System.out.println(count.toString() + " " + URL);
                             return new Pair<>(URL, count);
                         }
