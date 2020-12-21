@@ -24,6 +24,9 @@ public class ActorCache extends AbstractActor {
                         getSender().tell(CODE_NOT_FOUND, ActorRef.noSender());
                     }
                 })
+                .match(ReturnResultMsg.class, msg -> {
+                    testResults.put(msg.getTestUrl(), msg.getResult());
+                })
                 .build();
     }
 }

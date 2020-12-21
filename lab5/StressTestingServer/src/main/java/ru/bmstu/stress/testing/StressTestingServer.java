@@ -21,6 +21,7 @@ import com.sun.xml.internal.ws.util.CompletedFuture;
 import scala.concurrent.Future;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
@@ -29,7 +30,7 @@ public class StressTestingServer extends AllDirectives {
 
     private final static String GET_PARAMETER = "packageId";
     private final static String MSG_TEST_ACCEPT = "Test Accepted \n";
-    private final static int TIMEOUT_FOR_FUTURE = 5;
+    private final static Duration TIMEOUT = Duration.ofMillis(5);
     private final static String SYSTEM_NAME = "routes";
     private final static String HOST = "localhost";
     private final static int PORT = 8080;
@@ -41,8 +42,8 @@ public class StressTestingServer extends AllDirectives {
         ActorSystem system = ActorSystem.create(SYSTEM_NAME);
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
-        //ActorRef actorCache = system.actorOf(Props.create(ActorCache.class));
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = createFlow(materializer); // вызов метода которому передаем HTTP, ActorSystem и ActorMaterializer
+        ActorRef actorCache = system.actorOf(Props.create(ActorCache.class));
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = createFlow(materializer, actorCache); // вызов метода которому передаем HTTP, ActorSystem и ActorMaterializer
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
                 ConnectHttp.toHost(HOST, PORT),
@@ -56,7 +57,7 @@ public class StressTestingServer extends AllDirectives {
 
     }
 
-    public static Flow<HttpRequest, HttpResponse, NotUsed> createFlow(ActorMaterializer materializer) {
+    public static Flow<HttpRequest, HttpResponse, NotUsed> createFlow(ActorMaterializer materializer, ActorRef actorCache) {
         return Flow.of(HttpRequest.class)
                 .map(
                         (req) -> {
@@ -68,6 +69,13 @@ public class StressTestingServer extends AllDirectives {
                 ).mapAsync(
                         1, (Pair<String, Integer> p) -> {
                             // TODO вызов актора Patterns.ask ответ обрабатываем с помощью thenCompose
+                            FindResultMsg msg = new FindResultMsg(p.first());
+                            CompletionStage<Object> answer = Patterns.ask(actorCache, msg, TIMEOUT);
+                            return answer.thenCompose(
+                                    (Object ans) -> {
+                                        return CompletableFuture.completedFuture(new Pair<>(p.first(), 10));
+                                    }
+                            );
                         }
                         ).map(
                         (Pair<String, Integer> p) -> {
