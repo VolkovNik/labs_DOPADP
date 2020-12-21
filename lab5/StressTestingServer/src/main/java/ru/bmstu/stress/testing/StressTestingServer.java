@@ -63,7 +63,10 @@ public class StressTestingServer extends AllDirectives {
                             Integer count = Integer.parseInt(queryParams.get("count").get());
                             return new Pair<>(URL, count);
                         }
-                ).map(
+                ).mapAsync(
+
+                )
+                .map(
                         (Pair<String, Integer> p) -> {
                             // TODO послать в кэширующий актор
                             return HttpResponse.create().withEntity(p.toString());
