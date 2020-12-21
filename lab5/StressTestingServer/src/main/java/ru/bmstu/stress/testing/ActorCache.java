@@ -1,2 +1,4 @@
-package ru.bmstu.stress.testing;public class ActorCache {
+package ru.bmstu.stress.testing;
+
+public class ActorCache {
 }

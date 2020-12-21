@@ -37,7 +37,7 @@ public class StressTestingServer extends AllDirectives {
         ActorSystem system = ActorSystem.create(SYSTEM_NAME);
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow; // вызов метода которому передаем HTTP, ActorSystem и ActorMaterializer
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = createFlow(); // вызов метода которому передаем HTTP, ActorSystem и ActorMaterializer
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
                 ConnectHttp.toHost(HOST, PORT),
@@ -49,6 +49,10 @@ public class StressTestingServer extends AllDirectives {
                 .thenCompose(ServerBinding::unbind)
                 .thenAccept(unbound -> system.terminate());
 
+    }
+
+    Flow<HttpRequest, HttpResponse, NotUsed> createFlow() {
+        return Flow;
     }
 
 }
