@@ -73,7 +73,10 @@ public class StressTestingServer extends AllDirectives {
                             CompletionStage<Object> answer = Patterns.ask(actorCache, findResultMsg, TIMEOUT);
                             return answer.thenCompose(
                                     (Object ans) -> {
-                                        if
+                                        if ((Integer)ans >= 0) {
+                                            return CompletableFuture.completedFuture(new Pair<>(p.first(), (Integer)ans));
+                                        }
+                                        
                                     }
                             );
                         }
