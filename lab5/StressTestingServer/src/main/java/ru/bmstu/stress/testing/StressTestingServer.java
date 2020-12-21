@@ -57,7 +57,7 @@ public class StressTestingServer extends AllDirectives {
         return Flow.of(HttpRequest.class)
                 .map(
                         (req) -> {
-                            System.out.println(req.getUri());
+                            System.out.println(req.getUri().query());
                             return new Pair<>(1, 1);
                         }
                 ).map(
