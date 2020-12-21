@@ -109,7 +109,7 @@ public class StressTestingServer extends AllDirectives {
                         (Pair<String, Integer> p) -> {
                             StoreResultMsg storeResultMsg = new StoreResultMsg(p.first(), p.second());
                             actorCache.tell(storeResultMsg, ActorRef.noSender());
-                            return HttpResponse.create().withEntity("average time connecting to " + p.first() + " is " + p.second());
+                            return HttpResponse.create().withEntity("average time connecting to " + p.first() + " is " + p.second() + "m\n");
                         }
                 );
     }
