@@ -64,9 +64,11 @@ public class StressTestingServer extends AllDirectives {
                             return new Pair<>(URL, count);
                         }
                 ).mapAsync(
+                        1, (Pair<String, Integer> p) ->{
 
-                )
-                .map(
+                            return new Pair<>(p.first(), p.second());
+                        }
+                        ).map(
                         (Pair<String, Integer> p) -> {
                             // TODO послать в кэширующий актор
                             return HttpResponse.create().withEntity(p.toString());
