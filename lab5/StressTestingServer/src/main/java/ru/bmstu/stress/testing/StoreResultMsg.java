@@ -1,10 +1,10 @@
 package ru.bmstu.stress.testing;
 
-public class ReturnResultMsg {
+public class StoreResultMsg {
     private final String testUrl;
     private final Integer result;
 
-    public ReturnResultMsg(String testUrl, Integer result) {
+    public StoreResultMsg(String testUrl, Integer result) {
         this.testUrl = testUrl;
         this.result = result;
     }

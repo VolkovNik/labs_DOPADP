@@ -69,8 +69,8 @@ public class StressTestingServer extends AllDirectives {
                 ).mapAsync(
                         1, (Pair<String, Integer> p) -> {
                             // TODO вызов актора Patterns.ask ответ обрабатываем с помощью thenCompose
-                            FindResultMsg msg = new FindResultMsg(p.first());
-                            CompletionStage<Object> answer = Patterns.ask(actorCache, msg, TIMEOUT);
+                            FindResultMsg findResultMsg = new FindResultMsg(p.first());
+                            CompletionStage<Object> answer = Patterns.ask(actorCache, findResultMsg, TIMEOUT);
                             return answer.thenCompose(
                                     (Object ans) -> {
                                         return CompletableFuture.completedFuture(new Pair<>(p.first(), 10));
@@ -79,7 +79,8 @@ public class StressTestingServer extends AllDirectives {
                         }
                         ).map(
                         (Pair<String, Integer> p) -> {
-                            // TODO послать в кэширующий актор
+                            StoreResultMsg storeResultMsg = new StoreResultMsg(p.first(), p.second());
+                            actorCache.tell(storeResultMsg, ActorRef.noSender());
                             return HttpResponse.create().withEntity(p.toString());
                         }
                 );

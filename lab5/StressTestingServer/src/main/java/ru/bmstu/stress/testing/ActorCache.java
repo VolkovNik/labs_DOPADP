@@ -4,7 +4,6 @@ import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.japi.pf.ReceiveBuilder;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ActorCache extends AbstractActor {
@@ -24,7 +23,7 @@ public class ActorCache extends AbstractActor {
                         getSender().tell(CODE_NOT_FOUND, ActorRef.noSender());
                     }
                 })
-                .match(ReturnResultMsg.class, msg -> {
+                .match(StoreResultMsg.class, msg -> {
                     testResults.put(msg.getTestUrl(), msg.getResult());
                 })
                 .build();
