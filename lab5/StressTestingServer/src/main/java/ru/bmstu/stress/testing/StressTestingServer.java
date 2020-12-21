@@ -51,7 +51,7 @@ public class StressTestingServer extends AllDirectives {
 
     }
 
-    Flow<HttpRequest, HttpResponse, NotUsed> createFlow() {
+    public static Flow<HttpRequest, HttpResponse, NotUsed> createFlow(ActorMaterializer materializer) {
         return Flow;
     }
 
