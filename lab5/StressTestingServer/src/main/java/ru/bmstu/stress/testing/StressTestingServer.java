@@ -7,30 +7,32 @@ import akka.actor.Props;
 import akka.http.javadsl.ConnectHttp;
 import akka.http.javadsl.Http;
 import akka.http.javadsl.ServerBinding;
-import akka.http.javadsl.marshallers.jackson.Jackson;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.model.Query;
 import akka.http.javadsl.server.AllDirectives;
-import akka.http.javadsl.server.Route;
 import akka.japi.Pair;
 import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
-import akka.stream.javadsl.Flow;
-import com.sun.xml.internal.ws.util.CompletedFuture;
-import scala.Int;
-import scala.concurrent.Future;
+import akka.stream.javadsl.*;
+
+import org.asynchttpclient.*;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Future;
+
+import static org.asynchttpclient.Dsl.asyncHttpClient;
 
 
 public class StressTestingServer extends AllDirectives {
 
-    private final static String GET_PARAMETER = "packageId";
-    private final static String MSG_TEST_ACCEPT = "Test Accepted \n";
     private final static Duration TIMEOUT = Duration.ofMillis(5);
     private final static String SYSTEM_NAME = "routes";
     private final static String HOST = "localhost";
@@ -67,7 +69,7 @@ public class StressTestingServer extends AllDirectives {
                             Integer count = Integer.parseInt(queryParams.get("count").get());
                             return new Pair<>(URL, count);
                         }
-                ).mapAsync(
+                        ).mapAsync(
                         1, (Pair<String, Integer> p) -> {
                             // TODO вызов актора Patterns.ask ответ обрабатываем с помощью thenCompose
                             FindResultMsg findResultMsg = new FindResultMsg(p.first());
@@ -80,9 +82,26 @@ public class StressTestingServer extends AllDirectives {
                                         Flow<Pair<String, Integer>, Integer, NotUsed> flow =
                                                 Flow.<Pair<String, Integer>>create()
                                                 .mapConcat(pair -> {
-                                                    re
+                                                    List<String> responses = Collections.nCopies(pair.second(), pair.first());
+                                                    return responses;
                                                 })
-
+                                                .mapAsync(
+                                                        p.second(), (String testUrl) -> {
+                                                            AsyncHttpClient asyncHttpClient = asyncHttpClient();
+                                                            Instant timeStart = Instant.now();
+                                                            Future<Response> whenResponse = asyncHttpClient.prepareGet(testUrl).execute();
+                                                            whenResponse.get();
+                                                            Long timeFull = timeStart.until(Instant.now(), ChronoUnit.NANOS);
+                                                            return CompletableFuture.completedFuture(timeFull.intValue());
+                                                        }
+                                                );
+                                        Source<Pair<String, Integer>, NotUsed> source = Source.single(p);
+                                        Sink<Integer, CompletionStage<Integer>> fold = Sink.fold(0, (agg, next) -> agg + next);
+                                        RunnableGraph<CompletionStage<Integer>> runnableGraph = source.via(flow).toMat(fold, Keep.right());
+                                        CompletionStage<Integer> result = runnableGraph.run(materializer);
+                                        return result.thenApply(
+                                                res -> new Pair<>(p.first(), res/p.second())
+                                        );
                                     }
                             );
                         }
