@@ -65,7 +65,7 @@ public class StressTestingServer extends AllDirectives {
                 ).map(
                         (Pair<String, Integer> p) -> {
                             // TODO послать в кэширующий актор
-                            return HttpResponse.create().withEntity("hello response" + p);
+                            return HttpResponse.create().withEntity(p.toString());
                         }
                 );
     }
