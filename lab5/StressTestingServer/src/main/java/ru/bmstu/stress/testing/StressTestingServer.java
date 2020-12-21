@@ -38,6 +38,12 @@ public class StressTestingServer extends AllDirectives {
     private final static String HOST = "localhost";
     private final static int PORT = 8080;
     private final static String MSG_RUNNING_SERVER = "Server online at http://localhost:8080/\nPress RETURN to stop...";
+    private final static String AVRG_TIME_CONNECTING_STR = "average time connecting to ";
+    private final static String IS_STR = " is ";
+    private final static String MILLIS_STR = "millis";
+    private final static String NEW_LINE_SYMBOL = "\n";
+    private final static String FIRST_QUERY_PARAM = "testUrl";
+    private final static String SECOND_QUERY_PARAM = "count";
 
 
     public static void main(String[] args) throws IOException {
@@ -65,13 +71,11 @@ public class StressTestingServer extends AllDirectives {
                 .map(
                         (req) -> {
                             Query queryParams = req.getUri().query();
-                            String URL = queryParams.get("testUrl").get();
-                            Integer count = Integer.parseInt(queryParams.get("count").get());
+                            String URL = queryParams.get(FIRST_QUERY_PARAM).get();
+                            Integer count = Integer.parseInt(queryParams.get(SECOND_QUERY_PARAM).get());
                             return new Pair<>(URL, count);
-                        }
-                        ).mapAsync(
+                        }).mapAsync(
                         1, (Pair<String, Integer> p) -> {
-                            // TODO вызов актора Patterns.ask ответ обрабатываем с помощью thenCompose
                             FindResultMsg findResultMsg = new FindResultMsg(p.first());
                             CompletionStage<Object> answer = Patterns.ask(actorCache, findResultMsg, TIMEOUT);
                             return answer.thenCompose(
@@ -91,12 +95,12 @@ public class StressTestingServer extends AllDirectives {
                                                             Instant timeStart = Instant.now();
                                                             Future<Response> whenResponse = asyncHttpClient.prepareGet(testUrl).execute();
                                                             whenResponse.get();
-                                                            Long timeFull = timeStart.until(Instant.now(), ChronoUnit.MILLIS);
-                                                            return CompletableFuture.completedFuture(timeFull.intValue());
+                                                            long timeFull = timeStart.until(Instant.now(), ChronoUnit.MILLIS);
+                                                            return CompletableFuture.completedFuture((int) timeFull);
                                                         }
                                                 );
                                         Source<Pair<String, Integer>, NotUsed> source = Source.single(p);
-                                        Sink<Integer, CompletionStage<Integer>> fold = Sink.fold(0, (agg, next) -> agg + next);
+                                        Sink<Integer, CompletionStage<Integer>> fold = Sink.fold(0, Integer::sum);
                                         RunnableGraph<CompletionStage<Integer>> runnableGraph = source.via(flow).toMat(fold, Keep.right());
                                         CompletionStage<Integer> result = runnableGraph.run(materializer);
                                         return result.thenApply(
@@ -104,12 +108,12 @@ public class StressTestingServer extends AllDirectives {
                                         );
                                     }
                             );
-                        }
-                        ).map(
+                        }).map(
                         (Pair<String, Integer> p) -> {
                             StoreResultMsg storeResultMsg = new StoreResultMsg(p.first(), p.second());
                             actorCache.tell(storeResultMsg, ActorRef.noSender());
-                            return HttpResponse.create().withEntity("average time connecting to " + p.first() + " is " + p.second() + "millis \n");
+                            return HttpResponse.create().withEntity(AVRG_TIME_CONNECTING_STR + p.first()
+                                    + IS_STR + p.second() + MILLIS_STR + NEW_LINE_SYMBOL);
                         }
                 );
     }
