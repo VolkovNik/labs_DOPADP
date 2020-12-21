@@ -60,9 +60,9 @@ public class StressTestingServer extends AllDirectives {
                         (req) -> {
                             //System.out.println(req.getUri().query().get("packageId").get());
                             Query queryParams = req.getUri().query();
+                            System.out.println(queryParams);
                             String URL = queryParams.get("testUrl").get();
                             Integer count = Integer.parseInt(queryParams.get("count").get());
-                            System.out.println(count.toString() + " " + URL);
                             return new Pair<>(URL, count);
                         }
                 ).map(
