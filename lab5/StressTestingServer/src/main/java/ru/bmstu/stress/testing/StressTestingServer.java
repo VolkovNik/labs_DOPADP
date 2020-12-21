@@ -18,6 +18,7 @@ import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 import com.sun.xml.internal.ws.util.CompletedFuture;
+import scala.Int;
 import scala.concurrent.Future;
 
 import java.io.IOException;
@@ -76,7 +77,7 @@ public class StressTestingServer extends AllDirectives {
                                         if ((Integer)ans >= 0) {
                                             return CompletableFuture.completedFuture(new Pair<>(p.first(), (Integer)ans));
                                         }
-                                        
+                                        Flow<Pair<String, Integer>, Integer, NotUsed> flow =
                                     }
                             );
                         }
