@@ -17,9 +17,11 @@ import akka.japi.Pair;
 import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
+import com.sun.xml.internal.ws.util.CompletedFuture;
 import scala.concurrent.Future;
 
 import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
 
@@ -64,10 +66,7 @@ public class StressTestingServer extends AllDirectives {
                             return new Pair<>(URL, count);
                         }
                 ).mapAsync(
-                        1, (Pair<String, Integer> p) ->{
-
-                            return CompletionStage<>.
-                        }
+                        1, (Pair<String, Integer> p) -> CompletableFuture.completedFuture(1)
                         ).map(
                         (Pair<String, Integer> p) -> {
                             // TODO послать в кэширующий актор
