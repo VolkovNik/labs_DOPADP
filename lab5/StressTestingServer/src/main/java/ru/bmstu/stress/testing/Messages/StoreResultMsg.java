@@ -1,4 +1,4 @@
-package ru.bmstu.stress.testing;
+package ru.bmstu.stress.testing.Messages;
 
 public class StoreResultMsg {
     private final String testUrl;

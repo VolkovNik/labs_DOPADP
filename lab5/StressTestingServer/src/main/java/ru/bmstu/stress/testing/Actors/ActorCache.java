@@ -1,8 +1,10 @@
-package ru.bmstu.stress.testing;
+package ru.bmstu.stress.testing.Actors;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.japi.pf.ReceiveBuilder;
+import ru.bmstu.stress.testing.Messages.FindResultMsg;
+import ru.bmstu.stress.testing.Messages.StoreResultMsg;
 
 import java.util.HashMap;
 

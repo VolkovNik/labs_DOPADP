@@ -17,6 +17,9 @@ import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.*;
 
 import org.asynchttpclient.*;
+import ru.bmstu.stress.testing.Actors.ActorCache;
+import ru.bmstu.stress.testing.Messages.FindResultMsg;
+import ru.bmstu.stress.testing.Messages.StoreResultMsg;
 
 import java.io.IOException;
 import java.time.Duration;
