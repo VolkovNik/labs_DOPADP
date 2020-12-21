@@ -57,11 +57,13 @@ public class StressTestingServer extends AllDirectives {
         return Flow.of(HttpRequest.class)
                 .map(
                         (req) -> {
-                            System.out.println(req.getUri().query().get("packageId").get());
-                            return new Pair<>(1, 1);
+                            //System.out.println(req.getUri().query().get("packageId").get());
+                            String URL = req.getUri().query().get("Url").get();
+                            Integer count = Integer.parseInt(req.getUri().query().get("count").get());
+                            return new Pair<>(URL, count);
                         }
                 ).map(
-                        (Pair<Integer, Integer> p) -> {
+                        (Pair<String, Integer> p) -> {
                             // TODO послать в кэширующий актор
                             return HttpResponse.create().withEntity("hello response" + p);
                         }
